@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/demodata/sources.com.bd/
+    - /bin/cp -R * $DEPLOYPATH

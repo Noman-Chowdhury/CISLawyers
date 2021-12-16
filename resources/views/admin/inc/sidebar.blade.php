@@ -5,7 +5,7 @@
 			<li class="nav-item mr-auto">
 				<a class="" href="{{url('/')}}">
 					<img style="height:40px; margin: 20px 20px;"
-					     src="#"
+					     src="{{ asset('images/logo.png') }}"
 					/>
 				</a>
 			</li>

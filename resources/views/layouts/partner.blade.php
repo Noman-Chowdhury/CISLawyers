@@ -10,8 +10,8 @@
     <meta name="author" content="Sources">
     <title>@yield('page-title','CIS Lawyers') | {{config('app.name')}}</title>
 {{--    <title>Sources | Best B2B Wholesale Market in Bangladesh</title>--}}
-    <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}'">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}'">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 {{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">--}}
     {{--    <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/toastr.min.css') }}">--}}
     {{--    <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/plugins/extensions/ext-component-toastr.css') }}">--}}

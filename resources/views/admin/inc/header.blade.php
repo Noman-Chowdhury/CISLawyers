@@ -42,37 +42,37 @@
             <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);"
                                                                          data-toggle="dropdown"><i class="ficon"
                                                                                                    data-feather="bell"></i><span
-                        class="badge badge-pill badge-danger badge-up">{{auth('admin')->user()->unreadNotifications->count()}}</span></a>
+                        class="badge badge-pill badge-danger badge-up">6</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class="dropdown-header d-flex">
                             <h4 class="notification-title mb-0 mr-auto">{{__('Notifications')}}</h4>
                             <div
-                                class="badge badge-pill badge-light-primary">{{auth('admin')->user()->unreadNotifications->count()}}
+                                class="badge badge-pill badge-light-primary">6
                                 New
                             </div>
                         </div>
                     </li>
                         <li class="scrollable-container media-list">
-                            @foreach(auth('admin')->user()->unreadNotifications->take(15) as $notification)
+{{--                            @foreach(auth('admin')->user()->unreadNotifications->take(15) as $notification)--}}
                             <a class="d-flex" href="javascript:void(0)">
                                 <div class="media d-flex align-items-start">
                                     <div class="media-left">
                                         {{--                                    avatar goes here--}}
                                         {{--                                    <div class="avatar"><img src="#" alt="avatar" width="32" height="32"></div>--}}
                                     </div>
-                                    <div class="media-body">
-                                        <a href="{{ route('mark-as-read',[encrypt($notification->id), $notification->data['route_name'], encrypt($notification->data['item_id'])??"null"]) }}">
-                                            <p class="media-heading">{!! $notification->data['data'] !!}
-                                            </p><small
-                                                class="notification-text"> {{$notification->created_at->diffForHumans()}}</small></a>
-                                    </div>
+{{--                                    <div class="media-body">--}}
+{{--                                        <a href="{{ route('mark-as-read',[encrypt($notification->id), $notification->data['route_name'], encrypt($notification->data['item_id'])??"null"]) }}">--}}
+{{--                                            <p class="media-heading">{!! $notification->data['data'] !!}--}}
+{{--                                            </p><small--}}
+{{--                                                class="notification-text"> {{$notification->created_at->diffForHumans()}}</small></a>--}}
+{{--                                    </div>--}}
                                 </div>
                             </a>
-                            @endforeach
+{{--                            @endforeach--}}
                         </li>
                     <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block"
-                                                        href="{{ route('notification.index') }}">
+                                                        href="#">
                             {{__('Read all Notifications')}}</a></li>
                 </ul>
             </li>
@@ -82,30 +82,30 @@
                                                            data-toggle="dropdown" aria-haspopup="true"
                                                            aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name font-weight-bolder">{{ ucfirst(Auth::user()->name) }}</span>
-                        @foreach(auth()->user()->getRoleNames() as $name)
-                            <span class="user-status">
-                                {{$name}}
-                            </span>
-                        @endforeach
+                            class="user-name font-weight-bolder">Username</span>
+{{--                        @foreach(auth()->user()->getRoleNames() as $name)--}}
+{{--                            <span class="user-status">--}}
+{{--                               Role name--}}
+{{--                            </span>--}}
+{{--                        @endforeach--}}
                     </div>
                     <span class="avatar">
-                        @if(auth('admin')->user()->image)
-                            <img class="round" src="{{asset(config('imagepath.profile').auth()->user()->image)}}"
-                                 alt="avatar" height="40" width="40">
-                        @else
+{{--                        @if(auth('admin')->user()->image)--}}
+{{--                            <img class="round" src="{{asset(config('imagepath.profile').auth()->user()->image)}}"--}}
+{{--                                 alt="avatar" height="40" width="40">--}}
+{{--                        @else--}}
                             <img class="round" src="{{asset('images/default.png')}}"
                                  alt="avatar" height="40" width="40">
-                        @endif
+{{--                        @endif--}}
                     <span class="avatar-status-online"></span></span></a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="{{route('view.profile')}}"><i class="mr-50" data-feather="user"></i>
+                    <a class="dropdown-item" href="#"><i class="mr-50" data-feather="user"></i>
                         {{__('Profile')}}</a>
                     <a class="dropdown-item" href="#"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                             class="mr-50" data-feather="power"></i> {{__('Logout')}}</a>
-                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="#" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>

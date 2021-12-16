@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class BusinessPartner extends Model
 {
-    use HasFactory, Notifiable, SoftDeletes, HasRoles;
+    use HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = ['name', 'image','email', 'phone_number', 'password', 'email_verified_at', 'last_seen_at'];
 

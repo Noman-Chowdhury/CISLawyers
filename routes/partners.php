@@ -9,7 +9,7 @@ use App\Http\Controllers\Partner\HomeController as PartnerHomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['prefix' => 'seller', 'as' => 'seller.'], function () {
+Route::group(['prefix' => 'partner', 'as' => 'partner.'], function () {
     //seller authentication system
     Route::get('register', [PartnerRegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [PartnerRegisterController::class, 'register']);
@@ -26,9 +26,9 @@ Route::group(['prefix' => 'seller', 'as' => 'seller.'], function () {
     Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 //    Route::post('/image-upload',[ImageUploadController::class,'uploadImage'])->name('uploadImage');
 
-    Route::group(['middleware' => ['auth:seller', ]], function () {
+//    Route::group(['middleware' => ['auth:seller', ]], function () {
 
         Route::get('/home', [PartnerHomeController::class, 'index'])->name('home');
 
-    });
+//    });
 });

@@ -8,7 +8,7 @@
     <meta name="description" content="A platform that will impact and ease your life.">
     <meta name="keywords" content="Source your business in sources.com.bd">
     <meta name="author" content="Sources">
-    <title>@yield('page-title','Sources') | {{config('app.name')}}</title>
+    <title>@yield('page-title','CIS Lawyers') | {{config('app.name')}}</title>
 {{--    <title>Sources | Best B2B Wholesale Market in Bangladesh</title>--}}
     <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}'">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}">
@@ -30,8 +30,8 @@
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
-@include('seller.inc.header')
-@include('seller.inc.sidebar')
+@include('partner.inc.header')
+@include('partner.inc.sidebar')
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -55,7 +55,7 @@
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
-@include('seller.inc.footer')
+@include('partner.inc.footer')
 
 {{--    <script src="{{ asset('admin/app-assets/vendors/js/extensions/toastr.min.js') }}"></script>--}}
 <script src="{{ asset(mix('js/admin.js')) }}"></script>
@@ -300,7 +300,7 @@
                 }
             });
         });
-        
+
         $('#dataTable').DataTable();
     })
     //all error message show in tostr
@@ -315,7 +315,7 @@
     });
     @endforeach
     @endif
-	
+
 </script>
 </body>
 <!-- END: Body-->

@@ -8,7 +8,7 @@
     <meta name="description" content="Sources - B2B business">
     <meta name="keywords" content="Ecommerce, B2B, business,">
     <meta name="author" content="Sources">
-    <title>@yield('page-title','Sources') | {{config('app.name')}}</title>
+    <title>@yield('page-title','CIS Lawyers') | {{config('app.name')}}</title>
 	<script src="{{asset('admin/app-assets/js/pusher.js')}}"></script>
 	<script>
 

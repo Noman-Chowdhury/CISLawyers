@@ -29,11 +29,11 @@ class RedirectIfAuthenticated
         if ($guard == "admin" && Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::ADMINHOME);
         }
-        if ($guard == "seller" && Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::SELLERHOME);
+        if ($guard == "partner" && Auth::guard($guard)->check()) {
+            return redirect(RouteServiceProvider::PARTNERHOME);
         }
-        if ($guard == "agent" && Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::AGENTHOME);
+        if ($guard == "user" && Auth::guard($guard)->check()) {
+            return redirect(RouteServiceProvider::USERHOME);
         }
         if (Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::HOME);

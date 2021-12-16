@@ -19,8 +19,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/my-account/info';
     public const ADMINHOME = '/admin/home';
-    public const AGENTHOME = '/agent/home';
-    public const SELLERHOME = '/seller/home';
+    public const USERHOME = '/agent/home';
+    public const PARTNERHOME = '/partner/home';
 
 
     /**

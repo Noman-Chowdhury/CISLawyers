@@ -56,6 +56,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
-
+        Route::get('frontend/home',[\App\Http\Controllers\FrontendController::class, 'getHomeSetting'])->name('home.setting');
+        Route::post('frontend/home/carousel',[\App\Http\Controllers\FrontendController::class, 'storeCarousel'])->name('store.carousel');
+        Route::get('frontend/home/carousel/{id}',[\App\Http\Controllers\FrontendController::class, 'sliderImageDelete'])->name('slider.image.delete');
     });
 });

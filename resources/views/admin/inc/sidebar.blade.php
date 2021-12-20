@@ -22,6 +22,19 @@
 				<li class="{{ request()->segment(2)=='home' ? 'active' :'' }} nav-item">
 					<a class="d-flex align-items-center" href="{{ route('admin.home') }}"><i class="fas fa-tachometer-alt"></i><span class="menu-title text-truncate" data-i18n="dashboard">{{__('Dashboard')}}</span></a>
 				</li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
+                        class="fas fa-baby-carriage"
+                    ></i><span class="menu-title text-truncate" data-i18n="User"
+                    >{{__('Page Management')}}</span></a>
+                <ul class="menu-content">
+                    <li class="{{ request()->segment(2)=='product' ? 'active' :'' }} nav-item"><a
+                            class="d-flex align-items-center" href="{{ route('home.setting') }}"
+                        ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"
+                                                                  data-i18n="Home"
+                            >{{__('Home')}}</span></a></li>
+                </ul>
+            </li>
         </ul>
     </div>
+
 </div><!-- END: Main Menu-->

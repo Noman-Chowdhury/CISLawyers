@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+{{--    Slider Section--}}
     <section class="wpo-hero-slider">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -47,6 +48,7 @@
             <div class="swiper-button-prev"></div>
         </div>
     </section>
+{{--    Feature Section--}}
     <section class="wpo-features-section section-padding">
         <div class="container">
             <div class="wpo-features-wrapper">
@@ -103,6 +105,7 @@
             </div>
         </div>
     </section>
+<!--Contact Section-->
     <section class="wpo-contact-section section-padding">
         <div class="container">
             <div class="wpo-contact-section-wrapper">

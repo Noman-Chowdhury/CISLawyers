@@ -53,9 +53,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('admin.password.update');
     Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 
-//    Route::group(['middleware' => ['auth:admin']], function () {
+    Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
 
-//    });
+    });
 });

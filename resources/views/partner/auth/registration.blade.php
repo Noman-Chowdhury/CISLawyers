@@ -214,7 +214,7 @@
                 </div>
                 <button class="btn btn-primary btn-block" type="submit" tabindex="4">Register</button>
             </form>
-            <p class="card-text text-center mt-2"><span>Have an Account? </span><a href="{{ route('seller.login') }}"
+            <p class="card-text text-center mt-2"><span>Have an Account? </span><a href="{{ route('partner.login') }}"
                                                                                    class="router-link-active"
                                                                                    target="_self"><span> Sign In</span></a>
             </p>
@@ -266,38 +266,28 @@
             })
 
         });
-        $('#select_division').change(function () {
-            $.ajax({
-                url: "{{route('districts.get_by_division')}}?division_id=" + $(this).val(),
-                method: 'GET',
-                success: function (data) {
-                    $('.district').show();
-                    $('#select_district').html(data.html);
-                }
-            });
-            $('#select_district').on('change', function () {
+        {{--$('#select_division').change(function () {--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{route('districts.get_by_division')}}?division_id=" + $(this).val(),--}}
+        {{--        method: 'GET',--}}
+        {{--        success: function (data) {--}}
+        {{--            $('.district').show();--}}
+        {{--            $('#select_district').html(data.html);--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--    $('#select_district').on('change', function () {--}}
 
-                //console.log($('#select_district').val());
-                $.ajax({
-                    url: "{{route('upazila.get_by_district')}}?district_id=" + $(this).val(),
-                    method: 'GET',
-                    success: function (data) {
-                        $('.upazila').show();
-                        $('#select_upazila').html(data.html);
-                    }
-                })
-            });
-        });
-        $('#sector').change(function () {
-            $.ajax({
-                url: "{{route('type.get_by_sector')}}?sector=" + $(this).val(),
-                method: 'GET',
-                success: function (data) {
-                    $('.type').show();
-                    $('#type').html(data.html);
-                }
-            });
-        });
+        {{--        //console.log($('#select_district').val());--}}
+        {{--        $.ajax({--}}
+        {{--            url: "{{route('upazila.get_by_district')}}?district_id=" + $(this).val(),--}}
+        {{--            method: 'GET',--}}
+        {{--            success: function (data) {--}}
+        {{--                $('.upazila').show();--}}
+        {{--                $('#select_upazila').html(data.html);--}}
+        {{--            }--}}
+        {{--        })--}}
+        {{--    });--}}
+        {{--});--}}
         $('#registerSubmit').submit(function (e) {
             $("#pageloader").fadeIn();
             e.preventDefault()
@@ -305,7 +295,7 @@
 
             // console.log($("#registerSubmit").serialize(),);
             $.ajax({
-                url: '{{ route('seller.register') }}',
+                url: '{{ route('partner.register') }}',
                 data: $("#registerSubmit").serialize(),
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

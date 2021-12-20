@@ -23,7 +23,6 @@ class CreateBusinessPartnersTable extends Migration
             $table->timestamp('last_seen_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
             $table->softDeletes();
             $table->timestamps();
         });

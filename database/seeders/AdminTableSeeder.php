@@ -20,10 +20,9 @@ class AdminTableSeeder extends Seeder
         $admin=Admin::create([
             'name' => 'Super Admin',
             'phone_number' => '01777873960',
-            'email' => 'superadmin@gmail.com',
-            'password' => Hash::make('123@webtech'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678'),
         ]);
-        $admin->assignRole(2);
 
 
     }

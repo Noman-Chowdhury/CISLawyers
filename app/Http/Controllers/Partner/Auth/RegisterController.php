@@ -21,17 +21,17 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    protected $redirectTo = RouteServiceProvider::SELLERHOME;
+    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
 
     public function __construct()
     {
-        $this->middleware('guest:seller');
+        $this->middleware('guest:partner');
     }
 
     public function showRegistrationForm()
     {
         $divisions = Division::orderBy('name','asc')->get();
-        return view('seller.auth.registration', compact( 'divisions'));
+        return view('partner.auth.registration', compact( 'divisions'));
     }
 
     public function register(StoreRegistrationRequest $request): \Illuminate\Http\JsonResponse

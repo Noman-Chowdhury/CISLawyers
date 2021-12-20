@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Partner\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Seller\Seller;
 use App\Providers\RouteServiceProvider;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -14,14 +13,14 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = RouteServiceProvider::SELLERHOME;
+    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
 
     protected $maxAttempts = 3; // Default is 5
     protected $decayMinutes = 2; // Default is 1
 
     public function __construct()
     {
-        $this->middleware('guest:seller')->except('logout');
+        $this->middleware('guest:partner')->except('logout');
     }
 
     /**
@@ -29,7 +28,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('seller.auth.login');
+        return view('partner.auth.login');
     }
 
     /**
@@ -50,7 +49,7 @@ class LoginController extends Controller
 
     public function showRegisterForm()
     {
-        return view('seller.auth.registration');
+        return view('partner.auth.registration');
     }
 
     /**
@@ -83,7 +82,7 @@ class LoginController extends Controller
             return $response;
         }*/
 
-        return redirect()->route('seller.login');
+        return redirect()->route('partner.login');
     }
 
     /**
@@ -91,7 +90,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('seller');
+        return Auth::guard('partner');
     }
 
 

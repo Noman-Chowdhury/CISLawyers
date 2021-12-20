@@ -48,9 +48,9 @@ return [
             'driver' => 'session',
             'provider' => 'agents',
         ],
-        'seller' => [
+        'partner' => [
             'driver' => 'session',
-            'provider' => 'sellers',
+            'provider' => 'partners',
         ],
 
         'api' => [
@@ -86,9 +86,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin\Admin::class,
         ],
-        'sellers' => [
+        'partners' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Seller\Seller::class,
+            'model' => App\Models\Partner\BusinessPartner::class,
         ],
         'agents' => [
             'driver' => 'eloquent',
@@ -129,8 +129,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'sellers' => [
-            'provider' => 'sellers',
+        'partners' => [
+            'provider' => 'partners',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

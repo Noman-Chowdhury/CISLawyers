@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('slogon', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
     Route::post('slogon', [AdminLoginController::class, 'login']);
     Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+
     Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
     Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
@@ -56,6 +57,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
+        Route::post('add-partner', [AdminHomeController::class, 'add_partner'])->name('admin.partner.add');
+        Route::get('partner-list', [AdminHomeController::class, 'partner_list'])->name('admin.partner.list');
+
         Route::get('frontend/home',[\App\Http\Controllers\FrontendController::class, 'getHomeSetting'])->name('home.setting');
         Route::post('frontend/home/carousel',[\App\Http\Controllers\FrontendController::class, 'storeCarousel'])->name('store.carousel');
         Route::get('frontend/home/carousel/{id}',[\App\Http\Controllers\FrontendController::class, 'sliderImageDelete'])->name('slider.image.delete');

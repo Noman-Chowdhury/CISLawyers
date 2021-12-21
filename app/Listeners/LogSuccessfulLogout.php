@@ -3,9 +3,8 @@
 namespace App\Listeners;
 
 use App\Models\Admin\Admin;
-use App\Models\Seller\Seller;
+use App\Models\Partner\BusinessPartner;
 use App\Models\User;
-use Google\Service\DisplayVideo\Partner;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -33,7 +32,7 @@ class LogSuccessfulLogout
         if ($event->guard == 'admin'){
             $model = new Admin();
         }elseif ($event->guard == 'partner'){
-            $model = new Partner();
+            $model = new BusinessPartner();
         }else{
             $model = new User();
         }

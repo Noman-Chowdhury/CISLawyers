@@ -31,21 +31,6 @@ class LoginController extends Controller
         return view('partner.auth.login');
     }
 
-    /**
-     * The user has been authenticated.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param mixed $user
-     * @return mixed
-     */
-    protected function authenticated(Request $request, $user)
-    {
-        if ($user->organization->status == 'blocked') {
-            $this->guard()->logout();
-            Toastr::error('Your account has been Restricted. Please,Contact with Admin', 'Error');
-            return back();
-        }
-    }
 
     public function showRegisterForm()
     {

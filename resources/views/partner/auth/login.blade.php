@@ -1,5 +1,5 @@
-@extends('layouts.auth.seller_auth')
-@section('page-title','Seller Login')
+@extends('layouts.auth.partner_auth')
+@section('page-title','Partner Login')
 @push('styles')
 <style type="text/css">
     .input-group-append:not(:last-child) .input-group-text {
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-            <h2 class="card-title font-weight-bold mb-1 underline text-center login-title" style="text-decoration: underline"><b>Source Page Login</b></h2>
+            <h2 class="card-title font-weight-bold mb-1 underline text-center login-title" style="text-decoration: underline"><b>Partner Login</b></h2>
             <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
             <div role="alert" aria-live="polite" aria-atomic="true" id="hide" class="alert alert-primary" style="display:none !important;">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             @endif
-            <form class="auth-login-form mt-2" action="{{ route('seller.login') }}" method="POST">
+            <form class="auth-login-form mt-2" action="{{ route('partner.login') }}" method="POST">
                 @csrf
                  <div class="form-group">
                     <label class="form-label" for="login-email">Email<span style="color: red;">*</span></label>
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <div class="d-flex justify-content-between">
-                        <label for="login-password">Password<span style="color: red;">*</span></label><a href="{{route('seller.password.request')}}"><small>Forgot Password?</small></a>
+                        <label for="login-password">Password<span style="color: red;">*</span></label><a href="{{route('partner.password.request')}}"><small>Forgot Password?</small></a>
                     </div>
                     <div class="input-group input-group-merge form-password-toggle">
                         <div class="input-group-prepend">
@@ -85,7 +85,7 @@
                 </div>
                 <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
             </form>
-            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('seller.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>
+            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('partner.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>
         </div>
     </div>
     </div>

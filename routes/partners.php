@@ -26,9 +26,7 @@ Route::group(['prefix' => 'partner', 'as' => 'partner.'], function () {
     Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 //    Route::post('/image-upload',[ImageUploadController::class,'uploadImage'])->name('uploadImage');
 
-//    Route::group(['middleware' => ['auth:partner', ]], function () {
-
+    Route::group(['middleware' => ['auth:partner', ]], function () {
         Route::get('/home', [PartnerHomeController::class, 'index'])->name('home');
-
-//    });
+    });
 });

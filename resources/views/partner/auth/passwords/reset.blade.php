@@ -1,5 +1,5 @@
-@extends('layouts.auth.seller_auth')
-@section('page-title','Seller Reset Password')
+@extends('layouts.auth.partner_auth')
+@section('page-title','Partner Reset Password')
 @section('content')
 
     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             @endif
-            <form class="auth-reset-password-form mt-2" action="{{ route('seller.password.update') }}" method="POST" novalidate="novalidate">
+            <form class="auth-reset-password-form mt-2" action="{{ route('partner.password.update') }}" method="POST" novalidate="novalidate">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <input type="hidden" name="email" value="{{ $email }}">
@@ -45,7 +45,7 @@
                 </div>
                 <button class="btn btn-primary btn-block waves-effect waves-float waves-light" tabindex="3">{{ __('Reset Password') }}</button>
             </form>
-            <p class="text-center mt-2"><a href="{{ route('seller.login') }}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Back to login</a></p>
+            <p class="text-center mt-2"><a href="{{ route('partner.login') }}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Back to login</a></p>
         </div>
     </div>
     </div>

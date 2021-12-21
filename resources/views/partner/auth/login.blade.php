@@ -85,7 +85,7 @@
                 </div>
                 <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
             </form>
-            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('partner.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>
+{{--            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('partner.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>--}}
         </div>
     </div>
     </div>

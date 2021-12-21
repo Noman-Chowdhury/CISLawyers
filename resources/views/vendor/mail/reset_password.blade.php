@@ -5,7 +5,7 @@
 <p style="font-weight: 700; font-size: 20px; margin-top: 0; --text-opacity: 1; color: #7367f0; ">{{ $name }}</p>
 <p style="margin: 0 0 24px;">
     A request to reset password was received from your
-    <span style="font-weight: 600;">Sources</span> Account .</p>
+    <span style="font-weight: 600;">CISlawyers</span> Account .</p>
 <p style="margin: 0 0 24px;">Use this link to reset your password and login.</p>
 <a href="{{$link}}" style="display: block; font-size: 14px; line-height: 100%; margin-bottom: 24px; --text-opacity: 1; color: #7367f0; text-decoration: none;">{{$link}}</a>
 <table style="font-family: 'Montserrat',Arial,sans-serif;" role="presentation">

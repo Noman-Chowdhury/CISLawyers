@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\Admin\Admin;
+use App\Models\Partner\BusinessPartner;
 use App\Models\Seller\Seller;
 use App\Models\User;
 use Illuminate\Auth\Events\Failed;
@@ -31,8 +32,8 @@ class LogFailedLogin
     {
         if ($event->guard == 'admin'){
             $model = new Admin();
-        }elseif ($event->guard == 'seller'){
-            $model = new Seller();
+        }elseif ($event->guard == 'partner'){
+            $model = new BusinessPartner();
         }else{
             $model = new User();
         }

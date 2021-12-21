@@ -41,7 +41,7 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         $email=$notifiable->email;
-        $link = route('seller.password.reset',[$this->token, 'email'=> $email]);
+        $link = route('partner.password.reset',[$this->token, 'email'=> $email]);
         return (new MailMessage)->view('vendor.mail.reset_password',[
             'link' => $link,
             'email'=> $email,

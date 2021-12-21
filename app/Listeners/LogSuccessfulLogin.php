@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Models\Admin\Admin;
+use App\Models\Partner\BusinessPartner;
 use App\Models\User;
-use Google\Service\DisplayVideo\Partner;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -35,7 +35,7 @@ class LogSuccessfulLogin
             $model = new Admin();
         }elseif ($event->guard == 'partner'){
 //            $id=$event->user->id;
-            $model = new Partner();
+            $model = new BusinessPartner();
         }else{
 //            $id=$event->user->id;
             $model = new User();

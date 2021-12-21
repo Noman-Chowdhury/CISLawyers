@@ -102,7 +102,7 @@
                     <a class="dropdown-item" href="#"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                             class="mr-50" data-feather="power"></i> {{__('Logout')}}</a>
-                    <form id="logout-form" action="#" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('partner.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>

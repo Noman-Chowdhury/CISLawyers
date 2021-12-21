@@ -8,7 +8,7 @@
     </div>
 @endsection
 @section('content')
-    Admin Home
+
 @endsection
 @push('scripts')
 

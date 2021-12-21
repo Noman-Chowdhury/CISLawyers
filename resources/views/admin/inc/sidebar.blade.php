@@ -4,10 +4,9 @@
 		<ul class="nav navbar-nav flex-row">
 			<li class="nav-item mr-auto">
 				<a class="" href="{{url('/')}}">
-					<img style="height:40px; margin: 20px 20px;"
-					     src="{{ asset('images/logo.png') }}"
-					/>
-				</a>
+{{--					<img style="height:40px; margin: 20px 20px;" src="{{ asset('images/logo.png') }}"/>--}}
+				<h3 style="height:40px; margin: 20px 20px;" >CIS-LAWYERS</h3>
+                </a>
 			</li>
 			<li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
 							class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"
@@ -22,9 +21,7 @@
 				<li class="{{ request()->segment(2)=='home' ? 'active' :'' }} nav-item">
 					<a class="d-flex align-items-center" href="{{ route('admin.home') }}"><i class="fas fa-tachometer-alt"></i><span class="menu-title text-truncate" data-i18n="dashboard">{{__('Dashboard')}}</span></a>
 				</li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                        class="fas fa-baby-carriage"
-                    ></i><span class="menu-title text-truncate" data-i18n="User"
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="fas fa-file-alt"></i><span class="menu-title text-truncate" data-i18n="User"
                     >{{__('Page Management')}}</span></a>
                 <ul class="menu-content">
                     <li class="{{ request()->segment(2)=='product' ? 'active' :'' }} nav-item"><a

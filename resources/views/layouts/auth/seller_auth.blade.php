@@ -8,10 +8,10 @@
     <meta name="description" content="A platform that will impact and ease your life">
     <meta name="keywords" content="Source your business in sources.com.bd">
     <meta name="author" content="SOURCES">
-    <title>@yield('page-title','Sources')| {{config('app.name')}}</title>
+    <title>@yield('page-title','CIS Lawyers')| {{config('app.name')}}</title>
 {{--    <title>Login | Sources | Best Communication Platforms For business.</title>--}}
-    <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}'">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/sources.png') }}">
+{{--    <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/webtech.png') }}'">--}}
+{{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/sources.png') }}">--}}
 {{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">--}}
 
     <!-- BEGIN: Vendor CSS-->
@@ -63,7 +63,7 @@
                     <!-- /Brand logo-->
                     <!-- Left Text-->
                     <div class="d-none d-lg-flex align-items-center p-5 col-lg-8">
-                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{ asset('admin/app-assets/images/pages/Sign-up-banner.png') }}" alt="sources.com.bd" /></div>
+                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{ asset('admin/app-assets/images/pages/Sign-up-banner2.png') }}" alt="sources.com.bd" /></div>
                     </div>
                     <!-- /Left Text-->
                     @yield('content')

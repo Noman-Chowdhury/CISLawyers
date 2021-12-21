@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="author" content="SOURCES">
-    <title>Sources | Best Communication Platforms For business.</title>
-    <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/sources1.png') }}'">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/sources.png') }}">
+    <title>CIS Lawyers</title>
+{{--    <link rel="apple-touch-icon" href="{{ asset('admin/app-assets/images/ico/sources1.png') }}'">--}}
+{{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/app-assets/images/ico/sources.png') }}">--}}
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -61,7 +61,7 @@
                     <!-- /Brand logo-->
                     <!-- Left Text-->
                     <div class="d-none d-lg-flex align-items-center p-5 col-lg-8">
-                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{ asset('admin/app-assets/images/pages/Sign-up-banner.png') }}" alt="Login V2" /></div>
+                        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{ asset('admin/app-assets/images/pages/Sign-up-banner2.png') }}" alt="Login V2" /></div>
                     </div>
                     <!-- /Left Text-->
                     @yield('content')

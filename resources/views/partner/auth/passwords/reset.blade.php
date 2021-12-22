@@ -6,7 +6,7 @@
         <div>
         <div class="d-flex justify-content-center" style="margin-bottom: 5rem">
             <a class="" href="{{url('/')}}">
-	            <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"/>
+                <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"/>
             </a>
         </div>
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">

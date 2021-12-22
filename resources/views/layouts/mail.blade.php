@@ -19,7 +19,7 @@
                     <tr>
                         <td class="sm-py-32 sm-px-24" style="font-family: Montserrat, -apple-system, 'Segoe UI', sans-serif; padding: 48px; text-align: center;" align="center">
                             <a href="https://sources.com.bd/">
-                                <img src="{{ asset('admin/app-assets/images/ico/sources1.png') }}" width="155" alt="Sources" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
+                                <img src="{{ asset('admin/app-assets/images/ico/cislawyer_logo.png') }}" width="155" alt="Sources" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
                             </a>
                         </td>
                     </tr>

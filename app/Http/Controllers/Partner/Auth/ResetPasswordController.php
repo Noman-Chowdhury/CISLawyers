@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::SELLERHOME;
+    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
 
     /**
      * Display the password reset view for the given token.
@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
     {
         $token = $request->route()->parameter('token');
 
-        return view('seller.auth.passwords.reset')->with(
+        return view('partner.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -64,7 +64,7 @@ class ResetPasswordController extends Controller
      * password broker for admin guard.
      */
     public function broker(){
-        return Password::broker('sellers');
+        return Password::broker('partners');
     }
 
     /**
@@ -72,6 +72,6 @@ class ResetPasswordController extends Controller
      * after password reset.
      */
     public function guard(){
-        return Auth::guard('seller');
+        return Auth::guard('partner');
     }
 }

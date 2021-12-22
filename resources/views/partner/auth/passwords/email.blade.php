@@ -1,5 +1,5 @@
-@extends('layouts.auth.seller_auth')
-@section('page-title','Seller Forgot Password')
+@extends('layouts.auth.partner_auth')
+@section('page-title','Partner Forgot Password')
 @section('content')
 
     <div class="d-flex align-items-center col-lg-4  auth-bg px-2 p-lg-5">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 @endif
-                <form class="auth-forgot-password-form mt-2" action="{{route('seller.password.email')}}" method="POST">
+                <form class="auth-forgot-password-form mt-2" action="{{route('partner.password.email')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label class="form-label" for="forgot-password-email">Email</label>
@@ -37,7 +37,7 @@
                     <button class="btn btn-primary btn-block" tabindex="2">Send reset link</button>
                 </form>
                 <p class="text-center mt-2">
-                    <a href="{{route('seller.login')}}"><i data-feather="chevron-left"></i> Back to login</a></p>
+                    <a href="{{route('partner.login')}}"><i data-feather="chevron-left"></i> Back to login</a></p>
             </div>
         </div>
     </div>

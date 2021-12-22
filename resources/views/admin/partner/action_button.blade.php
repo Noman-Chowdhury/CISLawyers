@@ -9,9 +9,9 @@
             <a class="dropdown-item" href="#partner">
                 <div><i class="fas fa-eye"></i>&nbsp;&nbsp; {{__('Show Details')}}</div>
             </a>
-            <a class="dropdown-item" href="#" target="_blank">
-                <div><i class="fas fa-print"></i>&nbsp;&nbsp; {{__('Print')}}</div>
-            </a>
+{{--            <a class="dropdown-item" href="#" target="_blank">--}}
+{{--                <div><i class="fas fa-print"></i>&nbsp;&nbsp; {{__('Print')}}</div>--}}
+{{--            </a>--}}
         </div>
     </div>
 

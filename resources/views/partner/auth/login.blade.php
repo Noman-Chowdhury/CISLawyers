@@ -29,7 +29,7 @@
     <div class="px-xl-2 mx-auto col-sm-8 col-md-10 col-lg-12">
         <div class="d-flex justify-content-center">
             <a class="" href="{{url('/')}}">
-                <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/sources1.png') }}"/>
+	            <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"/>
             </a>
         </div>
 

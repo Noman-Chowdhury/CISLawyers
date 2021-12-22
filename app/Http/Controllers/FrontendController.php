@@ -54,4 +54,15 @@ class FrontendController extends Controller
         Toastr::success('Slider Image Deleted Successfully', 'Deleted.');
         return back();
     }
+    
+    public function storeSliderText(Request $request){
+        $texts = $request->image;
+        foreach($texts as $key=>$text){
+            $image = Image::findOrFail($key);
+            $image->title = $text['title'];
+            $image->text = $text['text'];
+            $image->save();
+       }
+        return back();
+    }
 }

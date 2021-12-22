@@ -50,7 +50,7 @@
     <div class="col-lg-4 auth-bg px-2 p-lg-2">
         <div class="d-flex justify-content-center pl-2">
             <a class="" href="{{url('/')}}">
-                <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/sources1.png') }}"/>
+	            <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"/>
             </a>
         </div>
         <br>

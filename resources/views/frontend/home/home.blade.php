@@ -1,19 +1,19 @@
 @extends('layouts.frontend')
 @section('content')
 {{--    Slider Section--}}
-    <section class="wpo-hero-slider">
+    <section class="wpo-hero-slider" style="height: 600px !important;">
         <div class="swiper-container">
             <div class="swiper-wrapper">
+	            @foreach($sliderImages as $image)
                 <div class="swiper-slide">
-                    <div class="slide-inner slide-bg-image" data-background="assets/images/slider/slide-1.jpg">
+                    <div class="slide-inner slide-bg-image" data-background="{{ asset(config('imagepath.slider').$image->filename) }}">
                         <div class="container-fluid">
                             <div class="slide-content">
                                 <div data-swiper-parallax="300" class="slide-title">
-                                    <h2>We Fight For Your Justice As Like A Friend.</h2>
+                                    <h2>{{ $image->title?? '' }}</h2>
                                 </div>
                                 <div data-swiper-parallax="400" class="slide-text">
-                                    <p>Law is commonly understood as a system of rules that are created and enforced
-                                        through social or government.</p>
+                                    <p>{{ $image->text?? '' }}</p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div data-swiper-parallax="500" class="slide-btns">
@@ -23,25 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="slide-inner slide-bg-image" data-background="assets/images/slider/slide-4.jpg">
-                        <div class="container-fluid">
-                            <div class="slide-content">
-                                <div data-swiper-parallax="300" class="slide-title">
-                                    <h2>We Fight For Your Justice As Like A Friend.</h2>
-                                </div>
-                                <div data-swiper-parallax="400" class="slide-text">
-                                    <p>Law is commonly understood as a system of rules that are created and enforced
-                                        through social or government.</p>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div data-swiper-parallax="500" class="slide-btns">
-                                    {{-- <a href="{{ route('aboutus') }}" class="theme-btn-s2">Explore more</a> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	            @endforeach
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>

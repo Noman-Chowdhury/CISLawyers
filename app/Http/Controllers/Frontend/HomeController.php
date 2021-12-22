@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,7 +11,8 @@ class HomeController extends Controller
 
     public function index()
     {
-       return view('frontend.home.home');
+        $sliderImages = Image::where('type','slider')->get();
+       return view('frontend.home.home', compact('sliderImages'));
     }
 
     /**

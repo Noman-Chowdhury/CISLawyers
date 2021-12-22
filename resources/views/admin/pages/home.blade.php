@@ -75,21 +75,21 @@
                                    aria-controls="slider" role="tab"
                                    aria-selected="true">{{__('Slider')}}</a>
                             </li>
-                            {{--                                <li class="nav-item">--}}
-                            {{--                                    <a class="nav-link active" id="slider-texts-tab" data-toggle="tab" href="#slider-texts"--}}
-                            {{--                                       aria-controls="slider-texts" role="tab"--}}
-                            {{--                                       aria-selected="true">{{__('Slider texts')}}</a>--}}
-                            {{--                                </li>--}}
-                            <li class="nav-item">
-                                <a class="nav-link" id="feature-tab" data-toggle="tab" href="#feature"
-                                   aria-controls="feature" role="tab"
-                                   aria-selected="false">{{__('Feature')}}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
-                                   aria-controls="contact" role="tab"
-                                   aria-selected="false">{{__('Contact')}}</a>
-                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="sliderText-tab" data-toggle="tab" href="#sliderText"
+                                                                   aria-controls="sliderText" role="tab"
+                                                                   aria-selected="true">{{__('Slider texts')}}</a>
+                                                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" id="feature-tab" data-toggle="tab" href="#feature"--}}
+{{--                                   aria-controls="feature" role="tab"--}}
+{{--                                   aria-selected="false">{{__('Feature')}}</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"--}}
+{{--                                   aria-controls="contact" role="tab"--}}
+{{--                                   aria-selected="false">{{__('Contact')}}</a>--}}
+{{--                            </li>--}}
                         </ul>
                         {{--  //Details Information--}}
                         <div class="tab-content">
@@ -126,29 +126,40 @@
                                 </div>
                             </div>
                             {{--Images Title--}}
-                            <div class="tab-pane" id="feature" aria-labelledby="feature-tab"
+                            <div class="tab-pane" id="sliderText" aria-labelledby="sliderText-tab"
                                  role="tabpanel">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">
+	                                        <form action="{{ route('store.slider.text') }}" method="POST">
+		                                        @csrf
+		                                        @method('PUT')
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-6">
                                                         @foreach($sliderImages as $image)
-                                                            <div class="col-sm-12 col-12 mb-2 col-lg-12">
+                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
                                                                 <label for="image_text">Image {{$loop->iteration}}
-                                                                    text:</label>
-                                                                <input type="text" name="imageText[]"
+                                                                    Title:</label>
+                                                                <input type="text" name="image[{{$image->id}}][title]"
                                                                        class="form-control"
-                                                                       id="text+'{{$loop->iteration}}'"
-                                                                       placeholder="image title"
-                                                                       value="{{ old('image_text') }}" required=""
+                                                                       placeholder="text"
+                                                                       value="{{ old('image.title', $image->title) }}" required=""
                                                                        autocomplete="off">
                                                             </div>
+		                                                    <div class="col-sm-6 col-6 mb-2 col-lg-6">
+			                                                    <label for="image_text">Image {{$loop->iteration}}
+				                                                    text:</label>
+			                                                    <input type="text" name="image[{{$image->id}}][text]"
+			                                                           class="form-control"
+			                                                           placeholder="image text"
+			                                                           value="{{ old('image.text', $image->text) }}" required=""
+			                                                           autocomplete="off">
+		                                                    </div>
                                                         @endforeach
-                                                    </div>
                                                 </div>
+	                                            <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
+	                                        </form>
                                         </div>
                                     </div>
                                 </div>

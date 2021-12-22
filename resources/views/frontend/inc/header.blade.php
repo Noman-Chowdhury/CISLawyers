@@ -55,7 +55,7 @@
           <div class="col-lg-2 col-md-6 col-6">
             <div class="navbar-header">
               <a class="navbar-brand" href="{{ route('home') }}"><img
-                  src="{{ asset('images/logo.png') }}"
+                  src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"
                   alt="LOGO"></a>
             </div>
           </div>
@@ -64,10 +64,10 @@
               <button class="menu-close"><i class="ti-close"></i></button>
               <ul class="mb-2 nav navbar-nav mb-lg-0">
                 <li><a class="@if (Route::currentRouteName() == 'home') active @endif" href="{{ route('home') }}">Home</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Lawyers</a></li>
-                  <li><a href="#">Consultants</a></li>
-                  <li><a href="#">Contact Us</a></li>
+{{--                  <li><a href="#">Services</a></li>--}}
+{{--                  <li><a href="#">Lawyers</a></li>--}}
+{{--                  <li><a href="#">Consultants</a></li>--}}
+{{--                  <li><a href="#">Contact Us</a></li>--}}
                   <li><a href="{{ route('admin.home') }}">Admin</a></li>
                   <li><a href="{{ route('partner.home') }}">Partner</a></li>
 
@@ -85,12 +85,12 @@
             </div>
           </div>
           <div class="col-lg-2 col-md-2 col-2">
-            <div class="header-right">
-              <div class="close-form">
-                <a class="theme-btn" class=" " href="#">Free
-                  Consulting</a>
-              </div>
-            </div>
+{{--            <div class="header-right">--}}
+{{--              <div class="close-form">--}}
+{{--                <a class="theme-btn" class=" " href="#">Free--}}
+{{--                  Consulting</a>--}}
+{{--              </div>--}}
+{{--            </div>--}}
           </div>
         </div>
       </div>

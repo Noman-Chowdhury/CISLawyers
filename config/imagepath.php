@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'slider' => '/images/slider'
+    'slider' => '/images/slider',
+    'law' => '/images/law',
 ];

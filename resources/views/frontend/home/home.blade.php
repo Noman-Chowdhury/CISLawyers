@@ -1,37 +1,43 @@
 @extends('layouts.frontend')
 @section('content')
-{{--    Slider Section--}}
+    {{--    Slider Section--}}
     <section class="wpo-hero-slider" style="height: 600px !important;">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-	            @foreach($sliderImages as $image)
-                <div class="swiper-slide">
-                    <div class="slide-inner slide-bg-image" data-background="{{ asset(config('imagepath.slider').$image->filename) }}">
-                        <div class="container-fluid">
-                            <div class="slide-content">
-                                <div data-swiper-parallax="300" class="slide-title">
-                                    <h2>{{ $image->title?? '' }}</h2>
-                                </div>
-                                <div data-swiper-parallax="400" class="slide-text">
-                                    <p>{{ $image->text?? '' }}</p>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div data-swiper-parallax="500" class="slide-btns">
-                                    {{-- <a href="{{ route('aboutus') }}" class="theme-btn-s2">Explore more</a> --}}
+                @foreach($sliderImages as $image)
+                    <div class="swiper-slide">
+                        <div class="slide-inner slide-bg-image"
+                             data-background="{{ asset(config('imagepath.slider').$image->filename) }}">
+                            <div class="container-fluid">
+                                <div class="slide-content">
+                                    <div data-swiper-parallax="300" class="slide-title">
+                                        <h2>{{ $image->title?? '' }}</h2>
+                                    </div>
+                                    <div data-swiper-parallax="400" class="slide-text">
+                                        <p>{{ $image->text?? '' }}</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div data-swiper-parallax="500" class="slide-btns">
+                                        {{-- <a href="{{ route('aboutus') }}" class="theme-btn-s2">Explore more</a> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-	            @endforeach
+                @endforeach
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
     </section>
-{{--    Feature Section--}}
+    {{--    Feature Section--}}
     <section class="wpo-features-section section-padding">
+        @php
+            if(isset($setting)){
+            $feature=json_decode($setting->rules);
+                        }
+        @endphp
         <div class="container">
             <div class="wpo-features-wrapper">
                 <div class="row">
@@ -43,8 +49,8 @@
                                 </div>
                             </div>
                             <div class="wpo-features-text">
-                                <h2><a href="#">Winning Guarantee</a></h2>
-                                <p>Our history of case are 99% winning success.</p>
+                                <h2><a href="{{ $feature->feature->left->url ?? '#' }}">{{$feature->feature->left->title ?? ' '}}</a></h2>
+                                <p>{{$feature->feature->left->text ?? ' '}}.</p>
                             </div>
                             <div class="visible-icon">
                                 <i class="fi flaticon-badge"></i>
@@ -59,8 +65,8 @@
                                 </div>
                             </div>
                             <div class="wpo-features-text">
-                                <h2><a href="#">Secure Management</a></h2>
-                                <p>Security system of our team is so great & wonderful.</p>
+                                <h2><a href="{{ $feature->feature->middle->url ?? '#' }}">{{$feature->feature->middle->title ?? ' '}}</a></h2>
+                                <p>{{$feature->feature->middle->text ?? ' '}}.</p>
                             </div>
                             <div class="visible-icon">
                                 <i class="fi flaticon-diary"></i>
@@ -75,8 +81,8 @@
                                 </div>
                             </div>
                             <div class="wpo-features-text">
-                                <h2><a href="#">Full time support</a></h2>
-                                <p>We are here for your help from 24/7</p>
+                                <h2><a href="{{ $feature->feature->right->url ?? '#' }}">{{$feature->feature->right->title ?? ' '}}</a></h2>
+                                <p>{{$feature->feature->right->text ?? ' '}}.</p>
                             </div>
                             <div class="visible-icon">
                                 <i class="fi flaticon-support"></i>
@@ -87,7 +93,7 @@
             </div>
         </div>
     </section>
-<!--Contact Section-->
+    <!--Contact Section-->
     <section class="wpo-contact-section section-padding">
         <div class="container">
             <div class="wpo-contact-section-wrapper">
@@ -97,10 +103,12 @@
                             <h2>Free Consulting</h2>
                             <form method="post" class="contact-validation-active" id="contact-form-main">
                                 <div>
-                                    <input type="text" class="form-control" name="name" id="c-name" placeholder="Your Name*">
+                                    <input type="text" class="form-control" name="name" id="c-name"
+                                           placeholder="Your Name*">
                                 </div>
                                 <div>
-                                    <input type="email" class="form-control" name="email" id="c-email" placeholder="Your Email*">
+                                    <input type="email" class="form-control" name="email" id="c-email"
+                                           placeholder="Your Email*">
                                 </div>
                                 <div>
                                     <select name="subject" class="form-control">
@@ -113,7 +121,8 @@
                                     </select>
                                 </div>
                                 <div class="fullwidth">
-                                    <textarea class="form-control" name="note" id="c-note" placeholder="Message..."></textarea>
+                                    <textarea class="form-control" name="note" id="c-note"
+                                              placeholder="Message..."></textarea>
                                 </div>
                                 <div class="submit-area">
                                     <button type="submit" class="theme-btn">Make An Appointment</button>
@@ -154,112 +163,45 @@
             </div>
         </div>
     </section>
+{{--    Law Section--}}
     <section class="wpo-service-section section-padding">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="wpo-section-title">
-                        <h2>The Area Where We Practice Our Law</h2>
+                        <h2>{{ $feature->law->header->left ?? '' }}</h2>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-2">
                     <div class="wpo-section-title">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.</p>
+                        <p>{{ $feature->law->header->right ?? '' }}</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col col-lg-4 col-12 service-thumbs">
                     <div class="service-thumbs-outer">
-                        <div class="service-thumb" data-case="#service-content-1">
-                            <p>Personal Injury</p>
-                            <span class="number">01</span>
+                        @foreach($laws as $law)
+                        <div class="service-thumb @if($loop->iteration ==2) active-thumb @endif" data-case="#service-content-{{$law->id}}">
+                            <p>{{ $law->name }}</p>
+                            <span class="number">{{ $loop->iteration }}</span>
                         </div>
-                        <div class="service-thumb active-thumb" data-case="#service-content-2">
-                            <p>Family Law</p>
-                            <span class="number">02</span>
-                        </div>
-                        <div class="service-thumb" data-case="#service-content-3">
-                            <p>Criminal Law</p>
-                            <span class="number">03</span>
-                        </div>
-                        <div class="service-thumb" data-case="#service-content-4">
-                            <p>Education Law</p>
-                            <span class="number">04</span>
-                        </div>
-                        <div class="service-thumb" data-case="#service-content-5">
-                            <p>Real Estate Law</p>
-                            <span class="number">05</span>
-                        </div>
-                        <div class="service-thumb" data-case="#service-content-6">
-                            <p>Business Law</p>
-                            <span class="number">06</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col col-lg-8 col-12 service-content">
                     <div class="service-content-outer">
-                        <div class="service-data" id="service-content-1">
+                        @foreach($laws as $law)
+                        <div class="service-data  @if($loop->iteration ==2) active-service-data @endif" id="service-content-{{ $law->id }}">
                             <div class="service-data-img">
-                                <img src="assets/images/service/img-2.jpg" alt="">
+                                <img src="{{asset(config('imagepath.law').$law->image)}}" alt="{{ $law->name }}" height="90%" width="90%">
                                 <div class="service-data-text">
-                                    <h3><a href="#">Personal Injury</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
+                                    <h3><a href="#">{{ $law->name }}</a></h3>
+                                    <p>{{ $law->content }} <a href="#">More About..</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="service-data active-service-data" id="service-content-2">
-                            <div class="service-data-img">
-                                <img src="assets/images/service/img-1.jpg" alt="">
-                                <div class="service-data-text">
-                                    <h3><a href="#">Family Law</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-data" id="service-content-3">
-                            <div class="service-data-img">
-                                <img src="assets/images/service/img-3.jpg" alt="">
-                                <div class="service-data-text">
-                                    <h3><a href="#">Criminal Law</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-data" id="service-content-4">
-                            <div class="service-data-img">
-                                <img src="assets/images/service/img-4.jpg" alt="">
-                                <div class="service-data-text">
-                                    <h3><a href="#">Education Law</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-data" id="service-content-5">
-                            <div class="service-data-img">
-                                <img src="assets/images/service/img-5.jpg" alt="">
-                                <div class="service-data-text">
-                                    <h3><a href="#">Real Estate Law</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="service-data" id="service-content-6">
-                            <div class="service-data-img">
-                                <img src="assets/images/service/img-6.jpg" alt="">
-                                <div class="service-data-text">
-                                    <h3><a href="#">Business Law</a></h3>
-                                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                                        suspendisse ultrices gravida. Risus commodo <a href="#">More About..</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

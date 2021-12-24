@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminSetting;
 use App\Models\Image;
+use App\Models\Law;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,8 +13,16 @@ class HomeController extends Controller
 
     public function index()
     {
+        $setting = AdminSetting::get()->first();   //get admin_Setting table row
+
+        if ($setting == null) {
+            $setting = new AdminSetting();
+            $setting->slogan = 'NULL';
+            $setting->save();
+        }
         $sliderImages = Image::where('type','slider')->get();
-       return view('frontend.home.home', compact('sliderImages'));
+        $laws = Law::all();
+       return view('frontend.home.home', compact('sliderImages','setting','laws'));
     }
 
     /**

@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function () {
     //admin authentication system
-    Route::get('slogon', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::get('login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
     Route::post('slogon', [AdminLoginController::class, 'login']);
     Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
@@ -64,5 +64,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('frontend/home/carousel',[\App\Http\Controllers\FrontendController::class, 'storeCarousel'])->name('store.carousel');
         Route::get('frontend/home/carousel/{id}',[\App\Http\Controllers\FrontendController::class, 'sliderImageDelete'])->name('slider.image.delete');
         Route::put('frontend/home/carousel-text', [\App\Http\Controllers\FrontendController::class, 'storeSliderText'])->name('store.slider.text');
+        Route::put('frontend/home/feature', [\App\Http\Controllers\FrontendController::class, 'storeFeature'])->name('store.feature');
+        Route::put('frontend/home/law', [\App\Http\Controllers\FrontendController::class, 'storeLaw'])->name('store.law');
+        Route::put('frontend/home/lawHeader', [\App\Http\Controllers\FrontendController::class, 'lawHeader'])->name('store.law.header');
+        Route::get('frontend/home/laws', [\App\Http\Controllers\FrontendController::class, 'laws'])->name('law.list');
     });
 });

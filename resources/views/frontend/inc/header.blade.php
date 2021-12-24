@@ -63,12 +63,8 @@
             <div id="navbar" class="collapse navbar-collapse navigation-holder">
               <button class="menu-close"><i class="ti-close"></i></button>
               <ul class="mb-2 nav navbar-nav mb-lg-0">
-                <li><a class="@if (Route::currentRouteName() == 'home') active @endif" href="{{ route('home') }}">Home</a></li>
-{{--                  <li><a href="#">Services</a></li>--}}
-{{--                  <li><a href="#">Lawyers</a></li>--}}
-{{--                  <li><a href="#">Consultants</a></li>--}}
-{{--                  <li><a href="#">Contact Us</a></li>--}}
-                  <li><a href="{{ route('admin.home') }}">Admin</a></li>
+                <li><a class="@if (Route::currentRouteName() == 'home') active @endif" href="{{ route('home') }}">About Us</a></li>
+                  <li><a href="#">Services</a></li>
                   <li><a href="{{ route('partner.home') }}">Partner</a></li>
 
 {{--                @foreach (Cache::get('pages') as $page)--}}

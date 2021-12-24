@@ -75,21 +75,31 @@
                                    aria-controls="slider" role="tab"
                                    aria-selected="true">{{__('Slider')}}</a>
                             </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" id="sliderText-tab" data-toggle="tab" href="#sliderText"
-                                                                   aria-controls="sliderText" role="tab"
-                                                                   aria-selected="true">{{__('Slider texts')}}</a>
-                                                            </li>
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" id="feature-tab" data-toggle="tab" href="#feature"--}}
-{{--                                   aria-controls="feature" role="tab"--}}
-{{--                                   aria-selected="false">{{__('Feature')}}</a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"--}}
-{{--                                   aria-controls="contact" role="tab"--}}
-{{--                                   aria-selected="false">{{__('Contact')}}</a>--}}
-{{--                            </li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link" id="sliderText-tab" data-toggle="tab" href="#sliderText"
+                                   aria-controls="sliderText" role="tab"
+                                   aria-selected="true">{{__('Slider texts')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="feature-tab" data-toggle="tab" href="#feature"
+                                   aria-controls="feature" role="tab"
+                                   aria-selected="false">{{__('Feature')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="lawHeader-tab" data-toggle="tab" href="#lawHeader"
+                                   aria-controls="lawHeader" role="tab"
+                                   aria-selected="false">{{__('Law Section Header')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="law-tab" data-toggle="tab" href="#law"
+                                   aria-controls="law" role="tab"
+                                   aria-selected="false">{{__('Law Section Content')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="law-tab" data-toggle="tab" href="#law"
+                                   aria-controls="law" role="tab"
+                                   aria-selected="false">{{__('Law Section Content')}}</a>
+                            </li>
                         </ul>
                         {{--  //Details Information--}}
                         <div class="tab-content">
@@ -131,11 +141,11 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">
-	                                        <form action="{{ route('store.slider.text') }}" method="POST">
-		                                        @csrf
-		                                        @method('PUT')
-                                            <div class="card-body">
-                                                <div class="row">
+                                            <form action="{{ route('store.slider.text') }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row">
                                                         @foreach($sliderImages as $image)
                                                             <div class="col-sm-6 col-6 mb-2 col-lg-6">
                                                                 <label for="image_text">Image {{$loop->iteration}}
@@ -143,23 +153,199 @@
                                                                 <input type="text" name="image[{{$image->id}}][title]"
                                                                        class="form-control"
                                                                        placeholder="text"
-                                                                       value="{{ old('image.title', $image->title) }}" required=""
+                                                                       value="{{ old('image.title', $image->title) }}"
+                                                                       required=""
                                                                        autocomplete="off">
                                                             </div>
-		                                                    <div class="col-sm-6 col-6 mb-2 col-lg-6">
-			                                                    <label for="image_text">Image {{$loop->iteration}}
-				                                                    text:</label>
-			                                                    <input type="text" name="image[{{$image->id}}][text]"
-			                                                           class="form-control"
-			                                                           placeholder="image text"
-			                                                           value="{{ old('image.text', $image->text) }}" required=""
-			                                                           autocomplete="off">
-		                                                    </div>
+                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                                <label for="image_text">Image {{$loop->iteration}}
+                                                                    text:</label>
+                                                                <input type="text" name="image[{{$image->id}}][text]"
+                                                                       class="form-control"
+                                                                       placeholder="image text"
+                                                                       value="{{ old('image.text', $image->text) }}"
+                                                                       required=""
+                                                                       autocomplete="off">
+                                                            </div>
                                                         @endforeach
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
-	                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--Feature Details--}}
+                            <div class="tab-pane" id="feature" aria-labelledby="feature-tab"
+                                 role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            @php
+                                                if(isset($setting)){
+                                                $feature=json_decode($setting->rules);
+                                                            }
+                                            @endphp
+                                            <form action="{{ route('store.feature') }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Left Feature Title:</label>
+                                                            <input type="text" name="feature[left][title]"
+                                                                   class="form-control"
+                                                                   placeholder="Left feature title"
+                                                                   value="{{ old('feature[left][title]',$feature->feature->left->title ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Left Feature Text:</label>
+                                                            <input type="text" name="feature[left][text]"
+                                                                   class="form-control"
+                                                                   placeholder="left feature text"
+                                                                   value="{{ old('feature[left][text]',$feature->feature->left->text ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Left Feature Url:</label>
+                                                            <input type="text" name="feature[left][url]"
+                                                                   class="form-control"
+                                                                   placeholder="left feature url"
+                                                                   value="{{ old('feature[left][url]',$feature->feature->left->url ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Middle Feature Title:</label>
+                                                            <input type="text" name="feature[middle][title]"
+                                                                   class="form-control"
+                                                                   placeholder="Middle feature title"
+                                                                   value="{{ old('feature[middle][title]',$feature->feature->middle->title ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Middle Feature Text:</label>
+                                                            <input type="text" name="feature[middle][text]"
+                                                                   class="form-control"
+                                                                   placeholder="Middle feature text"
+                                                                   value="{{ old('feature[middle][text]',$feature->feature->middle->text ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Middle Feature Url:</label>
+                                                            <input type="text" name="feature[middle][url]"
+                                                                   class="form-control"
+                                                                   placeholder="Middle feature url"
+                                                                   value="{{ old('feature[middle][url]',$feature->feature->middle->url ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Right Feature Title:</label>
+                                                            <input type="text" name="feature[right][title]"
+                                                                   class="form-control"
+                                                                   placeholder="Right feature title"
+                                                                   value="{{ old('feature[right][title]',$feature->feature->right->title ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Right Feature Text:</label>
+                                                            <input type="text" name="feature[right][text]"
+                                                                   class="form-control"
+                                                                   placeholder="Right feature text"
+                                                                   value="{{ old('feature[right][text]',$feature->feature->right->text ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-4 col-4 mb-2 col-lg-4">
+                                                            <label for="image_text">Right Feature Url:</label>
+                                                            <input type="text" name="feature[right][url]"
+                                                                   class="form-control"
+                                                                   placeholder="Right feature url"
+                                                                   value="{{ old('feature[right][url]',$feature->feature->right->url ?? ' ') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--Images Title--}}
+                            <div class="tab-pane" id="lawHeader" aria-labelledby="lawHeader-tab"
+                                 role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <form action="{{ route('store.law.header') }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                                <label for="image_text">Header Left</label>
+                                                                <input type="text" name="law[header][left]"
+                                                                       class="form-control"
+                                                                       placeholder="text"
+                                                                       value="{{ old('law[header][left]', $feature->law->header->left) }}"
+                                                                       autocomplete="off">
+                                                            </div>
+                                                        <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                            <label for="image_text">Header Right</label>
+                                                            <input type="text" name="law[header][right]"
+                                                                   class="form-control"
+                                                                   placeholder="text"
+                                                                   value="{{ old('law[header][right]', $feature->law->header->right?? '') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--Laws Content --}}
+                            <div class="tab-pane" id="law" aria-labelledby="law-tab"
+                                 role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <form action="{{ route('store.law') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                                <label for="image_text">Law Name:</label>
+                                                                <input type="text" name="name"
+                                                                       class="form-control"
+                                                                       placeholder="Name"
+                                                                       value="{{ old('name',) }}"
+                                                                       autocomplete="off">
+                                                            </div>
+                                                        <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                            <label for="image_text">Law Image:</label>
+                                                            <input type="file" name="image"
+                                                                   class="form-control"
+                                                                   placeholder="text"
+                                                                   value="{{ old('image') }}"
+                                                                   autocomplete="off">
+                                                        </div>
+                                                        <div class="col-sm-12 col-12 mb-2 col-lg-12">
+                                                            <label for="details">Law Content:</label>
+                                                            <textarea name="details" id="details" cols="30" rows="10" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                            <div class="card-body table-responsive">
+                                                <table id="dataTable" class="datatables-basic table">
+                                                </table>
                                             </div>
-	                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -176,6 +362,21 @@
     <script src="{{ asset('admin/app-assets/js/fileinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin/app-assets/js/theme.js') }}" type="text/javascript"></script>
     <script>
+        $(document).ready(function () {
+            var Table = $('#dataTable').dataTable({
+                stateSave: true,
+                responsive: true,
+                serverSide: true,
+                processing: true,
+                ajax: '{{ route('law.list') }}',
+                columns: [
+                    {data: "DT_RowIndex",title:"si", name: "DT_RowIndex", searchable: false, orderable: false},
+                    // {data: "feature_image", orderable: false, searchable: false},
+                    {data: "name", title:"title", searchable: true},
+                    {data: "action",title:"action", orderable: false, searchable: false},
+                ],
+            });
+        })
         // Tab reload error
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             localStorage.setItem('lastTab1', $(this).attr('href'));

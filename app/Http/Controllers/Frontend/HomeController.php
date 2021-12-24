@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
     public function index()
     {
         $setting = AdminSetting::get()->first();   //get admin_Setting table row

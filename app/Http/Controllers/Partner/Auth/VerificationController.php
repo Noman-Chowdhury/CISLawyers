@@ -28,7 +28,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::SELLERHOME;
+    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,7 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:seller');
+        $this->middleware('auth:partner');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:3,1')->only('verify', 'resend');
     }

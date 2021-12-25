@@ -1,44 +1,11 @@
 
 <?php
 
-use App\Http\Controllers\Admin\AccessController;
-use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\AttributeController;
-use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\VerificationController;
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\BuyerController;
-use App\Http\Controllers\Admin\BuyerInfoController;
-use App\Http\Controllers\Admin\BuyRequestController;
-use App\Http\Controllers\Admin\CategoryAttributeController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CurrencyController;
-use App\Http\Controllers\Admin\CustomizationController;
-use App\Http\Controllers\Admin\EmailController;
-use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\MediaController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\OrganizationsController;
-use App\Http\Controllers\Admin\OrganizationStatisticController;
-use App\Http\Controllers\Admin\ProductCommentController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProductInquiryController;
-use App\Http\Controllers\Admin\ProductServiceFeatureController;
-use App\Http\Controllers\Admin\RatingReviewController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\SectorController;
-use App\Http\Controllers\Admin\ServiceCommentController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ServiceInquiryController;
-use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\Admin\UnitController;
-use App\Http\Controllers\Admin\WalletController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -68,5 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('frontend/home/law', [\App\Http\Controllers\FrontendController::class, 'storeLaw'])->name('store.law');
         Route::put('frontend/home/lawHeader', [\App\Http\Controllers\FrontendController::class, 'lawHeader'])->name('store.law.header');
         Route::get('frontend/home/laws', [\App\Http\Controllers\FrontendController::class, 'laws'])->name('law.list');
+
+        Route::resource('case', \App\Http\Controllers\Admin\CaseController::class);
     });
 });

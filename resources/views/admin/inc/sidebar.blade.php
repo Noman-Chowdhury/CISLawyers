@@ -41,6 +41,18 @@
                             >{{__('Home')}}</span></a></li>
                 </ul>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
+                        class="fas fa-baby-carriage"
+                    ></i><span class="menu-title text-truncate" data-i18n="User"
+                    >{{__('Case Management')}}</span></a>
+                <ul class="menu-content">
+                    <li class="{{  Route::currentRouteName()=='case.index'?'active':'' }} nav-item"><a
+                            class="d-flex align-items-center" href="{{ route('case.index') }}"
+                        ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"
+                                                                  data-i18n="Home"
+                            >{{__('All Cases')}}</span></a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 

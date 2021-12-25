@@ -95,20 +95,13 @@
                                             <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                                 Services </a>
                                             <ul class="dropdown-menu">
-                                                <li class="" ><a class="dropdown-item {{ (request()->is('/service-request')) ? 'active' : '' }}" href="{{ route('service-request') }}">  Visit Visa</a></li>
-                                                <li><a class="dropdown-item" href="#">  Student Visa </a></li>
-                                                <li><a class="dropdown-item" href="#">  Work permit </a></li>
-                                                <li><a class="dropdown-item" href="#">  Immigration </a></li>
-                                                <li><a class="dropdown-item" href="#">  Appeal </a></li>
-                                                <li><a class="dropdown-item" href="#">  ECA </a></li>
-                                                <li><a class="dropdown-item" href="#">  NCA </a></li>
-                                                <li><a class="dropdown-item" href="#">  NID </a></li>
-                                                <li><a class="dropdown-item" href="#">  Passport </a></li>
-                                                <li><a class="dropdown-item" href="#">  Police clearance </a></li>
-                                                <li><a class="dropdown-item" href="#">  Immigration clearance </a></li>
-                                                <li><a class="dropdown-item" href="#">  Unmarried certificate </a></li>
-                                                <li><a class="dropdown-item" href="#">  Notary & Affidavit  </a></li>
-                                                <li><a class="dropdown-item" href="#">  Special Marriage </a></li>
+                                                @php
+                                                $services = \App\Models\Service::where('status','active')->get()
+                                                @endphp
+
+                                                @foreach($services as $service)
+                                                    <li><a class="dropdown-item" href="{{ route('service-request',['selected'=>$service->slug]) }}">{{ $service->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Lawyers </a></li>

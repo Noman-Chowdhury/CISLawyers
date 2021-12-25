@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminSetting;
+use App\Models\Home;
 use App\Models\Image;
 use App\Models\Law;
 use App\Models\Service;
@@ -24,8 +25,26 @@ class HomeController extends Controller
         }
         $sliderImages = Image::where('type','slider')->get();
         $laws = Law::all();
-       return view('frontend.home.home', compact('sliderImages','setting','laws'));
+        $home = Home::first();
+       return view('frontend.home.home', compact('sliderImages','setting','laws','home'));
     }
+    public function abouts(){
+        return view('frontend.about.index');
+    }
+    public function lawyersList(){
+        return view('frontend.lawyers.index');
+    }
+    public function consultantsList(){
+        return view('frontend.consultants.index');
+    }
+    public function financialAssociatesList(){
+        return view('frontend.financial_associates.index');
+    }
+    public function contact(){
+        return view('frontend.contact.index');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

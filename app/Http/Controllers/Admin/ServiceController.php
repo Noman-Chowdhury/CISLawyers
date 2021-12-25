@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Law;
+use App\Models\Service;
 use App\Models\ServiceRequest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class CaseController extends Controller
+class ServiceController extends Controller
 {
 
     public function index()
     {
         if (\request()->ajax()) {
-            $cases = ServiceRequest::latest()->with('user','service');
-            return DataTables::of($cases)
+            $services = Service::latest();
+            return DataTables::of($services)
                 ->addIndexColumn()
-                ->addColumn('action', function ($case) {
-                    return view('admin.pages.action', compact('case'));
-                })->addColumn('date', function ($case) {
-                    return $case->created_at->diffForHumans();
+                ->addColumn('action', function ($service) {
+                    return view('admin.pages.action', compact('service'));
+                }) ->addColumn('status', function ($service) {
+                    return $service->status == 'active' ? '<span class="badge badge-light-success">Active</span>' :  '<span class="badge badge-light-success">Inactive</span>';
                 })
-                ->rawColumns(['action','date'])
+                ->rawColumns(['action', 'status'])
                 ->tojson();
         }
-        return view('admin.case.index');
+        return view('admin.service.index');
     }
 
     /**

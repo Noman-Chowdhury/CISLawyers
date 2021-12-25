@@ -5,7 +5,7 @@
         <div style="font-size:20px;"><i class="fas fa-ellipsis-v fa-xs"></i></div>
     </button>
     <div class="dropdown-menu">
-        @if(!isset($case))
+        @if(!isset($case) && !isset($service))
             <a class="dropdown-item "
                href="#">
                 <div><i class="fas fa-eye"></i>&nbsp;&nbsp; {{__('View')}}</div>
@@ -33,6 +33,20 @@
                href="#">
                 <div><i class="fas fa-eye"></i>&nbsp;&nbsp; {{__('Assign to Member')}}</div>
             </a>
+        @endif
+        @if(isset($service))
+            @if($service->status == 'active')
+                    <a class="dropdown-item "
+                       href="#">
+                        <div><i class="fas fa-eye"></i>&nbsp;&nbsp; {{__('Inactive')}}</div>
+                    </a>
+            @endif
+                @if($service->status == 'inactive')
+                    <a class="dropdown-item "
+                       href="#">
+                        <div><i class="fas fa-eye"></i>&nbsp;&nbsp; {{__('Active')}}</div>
+                    </a>
+                @endif
         @endif
     </div>
 </div>

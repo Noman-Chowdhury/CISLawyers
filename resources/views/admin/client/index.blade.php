@@ -4,16 +4,16 @@
 @endpush
 @section('breadcrumb')
     <div class="col-12">
-        <h2 class="content-header-title float-left mb-0">{{__('Case Management')}}</h2>
+        <h2 class="content-header-title float-left mb-0">{{__('Clients')}}</h2>
     </div>
 @endsection
 @section('content')
-<div class="card">
-    <div class="card-body table-responsive">
-        <table id="dataTable" class="datatables-basic table">
-        </table>
+    <div class="card">
+        <div class="card-body table-responsive">
+            <table id="dataTable" class="datatables-basic table">
+            </table>
+        </div>
     </div>
-</div>
 @endsection
 @push('scripts')
     <script>
@@ -23,14 +23,12 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{{ route('case.index') }}',
+                ajax: '{{ route('client.index') }}',
                 columns: [
                     {data: "DT_RowIndex",title:"si", name: "DT_RowIndex", searchable: false, orderable: false},
-                    {data: "case_id", title:"case id", searchable: true},
-                    {data: "user.name",title:"User",},
-                    {data: "service.name",title:"Service",},
-                    {data: "details",title:"Details", },
-                    {data: "date",title:"Submitted", },
+                    {data: "name", title:"name", searchable: true},
+                    {data: "email", title:"email",},
+                    {data: "mobile", title:"mobile",},
                     {data: "action",title:"action", orderable: false, searchable: false},
                 ],
             });

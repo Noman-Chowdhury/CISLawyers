@@ -33,10 +33,10 @@ $setting = \App\Models\AdminSetting::first();
                         <ul>
                             @auth
                                 <li><a href="#">Profile</a></li>
-                                <li><a href="{{ route('logout') }}"
+                                <li><a href="#"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 </li>
-                                <form id="logout-form" action="#" method="POST" style="display: none;">@csrf</form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                             @else
                                 <li><a href="{{ route('login') }}">Login</a></li>
                                 <li><a href="{{ route('register') }}">Register</a></li>
@@ -89,7 +89,7 @@ $setting = \App\Models\AdminSetting::first();
                             <ul class="mb-2 nav navbar-nav mb-lg-0">
                                 <div class="collapse navbar-collapse" id="main_nav">
                                     <ul class="navbar-nav">
-                                        <li class="nav-item" style="padding:15px 0"><a class="nav-link"  href="{{url('/')}}">About Us</a></li>
+                                        <li class="nav-item" style="padding:15px 0"><a class="nav-link"  href="{{route('abouts')}}">About Us</a></li>
                                         <li class="nav-item dropdown nav_padding" style="padding: 15px 0" >
                                             <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                                 Services </a>
@@ -103,13 +103,13 @@ $setting = \App\Models\AdminSetting::first();
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Lawyers </a></li>
-                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Consultants </a></li>
-                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Financial Associates </a></li>
+                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('lawyers-list')}}">Lawyers </a></li>
+                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('consultant-list')}}">Consultants </a></li>
+                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('financialAssociate-list')}}">Financial Associates </a></li>
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Success </a></li>
-                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Contact Us </a></li>
+                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('contact')}}">Contact Us </a></li>
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#" style="background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Join us</a></li>
-                                        <li class="nav-item  position-right" style="padding: 15px 0"><a class="nav-link" href="#"  style="margin-left: 10px; background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Get Appointment</a></li>
+                                        <li class="nav-item  position-right" style="padding: 15px 0"><a class="nav-link" href="{{ route('service-request') }}"  style="margin-left: 10px; background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Get Appointment</a></li>
                                     </ul>
                                 </div> <!-- navbar-collapse.// -->
 

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Carousel;
 use App\Models\AdminSetting;
+use App\Models\Home;
 use App\Models\Image;
 use App\Models\Law;
 use App\Uploadable;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use PhpParser\Node\Stmt\Return_;
 use Yajra\DataTables\Facades\DataTables;
 
 class FrontendController extends Controller
@@ -25,8 +27,10 @@ class FrontendController extends Controller
             $setting->slogan = 'NULL';
             $setting->save();
         }
+
+        $home = Home::first();
         $sliderImages = Image::where('type', 'slider')->get();
-        return view('admin.pages.home', compact('sliderImages', 'setting'));
+        return view('admin.pages.home', compact('sliderImages', 'setting','home'));
     }
 
     public function storeCarousel(Request $request)
@@ -82,18 +86,16 @@ class FrontendController extends Controller
 
     public function storeFeature(Request $request)
     {
-        $admin_setting = AdminSetting::get()->first();   //get admin_Setting table row
+        $homeData = Home::get()->first();   //get admin_Setting table row
 
-        if ($admin_setting == null) {
-            $admin_setting = new AdminSetting();
-            $admin_setting->slogan = 'NULL';
-            $admin_setting->save();
+        if ($homeData == null) {
+            $homeData = new Home();
+            $homeData->feature = json_encode($request->only('feature'), true);
+        }else{
+            $homeData->feature = json_encode($request->only('feature'), true);
         }
-//        if (json_decode($admin_setting->rules, true)['feature']){
-//            $update = json_decode($admin_setting->rules, true)['feature'];
-//        }
-        $admin_setting->rules = json_encode($request->only('feature'), true);
-        $admin_setting->save();
+        $homeData->save();
+
         Toastr::success('Feature Text Updated Successfully', 'Updated.');
         return back();
     }
@@ -127,16 +129,16 @@ class FrontendController extends Controller
 
     public function lawHeader(Request $request)
     {
-        $setting = AdminSetting::get()->first();   //get admin_Setting table row
-        if ($setting == null) {
-            $setting = new AdminSetting();
-            $setting->slogan = 'NULL';
-            $setting->save();
+        $homeData = Home::get()->first();   //get admin_Setting table row
+
+        if ($homeData == null) {
+            $homeData = new Home();
+            $homeData->law = json_encode($request->only('law'), true);
+        }else{
+            $homeData->law = json_encode($request->only('law'), true);
         }
-        $existing = json_decode(($setting->rules));
-        $existing->law = $request->law;
-        $setting->rules = json_encode($existing);
-        $setting->save();
+        $homeData->save();
+
         Toastr::success('Law Header Updated Successfully', 'Success.');
         return back();
     }
@@ -175,7 +177,21 @@ class FrontendController extends Controller
         $input = $request->except(['image', 'logo']);
         $input = array_filter($input, 'strlen');
         $admin_setting->fill($input)->update();
-//        Toastr::success("You updated only modified input fields.");
+        Toastr::success("You updated only modified input fields.");
+        return back();
+    }
+
+    public function storeClientContent(Request $request){
+        $homeData = Home::get()->first();   //get admin_Setting table row
+
+        if ($homeData == null) {
+            $homeData = new Home();
+            $homeData->client = json_encode($request->only('client'), true);
+        }else{
+            $homeData->client = json_encode($request->only('client'), true);
+        }
+        $homeData->save();
+        Toastr::success("Client Section Content updated Successfully.", 'Success');
         return back();
     }
 }

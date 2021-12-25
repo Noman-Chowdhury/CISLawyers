@@ -34,8 +34,10 @@
     {{--    Feature Section--}}
     <section class="wpo-features-section section-padding">
         @php
-            if(isset($setting)){
-            $feature=json_decode($setting->rules);
+            if(isset($home)){
+            $feature=json_decode($home->feature);
+            $law = json_decode($home->law);
+            $client = json_decode($home->client);
                         }
         @endphp
         <div class="container">
@@ -298,9 +300,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-12">
                     <div class="wpo-section-title">
-                        <h2>What Our Clients Say About Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.</p>
+                        <h2>{{ $client->client->title ?? '' }}</h2>
+                        <p>{{ $client->client->text ?? '' }}</p>
                     </div>
                 </div>
                 <div class="col-lg-7 col-12">

@@ -100,7 +100,19 @@
                                    aria-controls="law" role="tab"
                                    aria-selected="false">{{__('Law Section Content')}}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="client-tab" data-toggle="tab" href="#client"
+                                   aria-controls="client" role="tab"
+                                   aria-selected="false">{{__('Client Content')}}</a>
+                            </li>
                         </ul>
+                        @php
+                            if(isset($home)){
+                            $feature=json_decode($home->feature);
+                            $law = json_decode($home->law);
+                            $client = json_decode($home->client);
+                                        }
+                        @endphp
                         {{--  //Details Information--}}
                         <div class="tab-content">
                             <div class="tab-pane active" id="slider" aria-labelledby="slider-tab"
@@ -182,11 +194,6 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">
-                                            @php
-                                                if(isset($setting)){
-                                                $feature=json_decode($setting->rules);
-                                                            }
-                                            @endphp
                                             <form action="{{ route('store.feature') }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
@@ -283,20 +290,20 @@
                                                 @method('PUT')
                                                 <div class="card-body">
                                                     <div class="row">
-                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
-                                                                <label for="image_text">Header Left</label>
-                                                                <input type="text" name="law[header][left]"
-                                                                       class="form-control"
-                                                                       placeholder="text"
-                                                                       value="{{ old('law[header][left]', $feature->law->header->left) }}"
-                                                                       autocomplete="off">
-                                                            </div>
+                                                        <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                            <label for="image_text">Header Left</label>
+                                                            <input type="text" name="law[header][left]"
+                                                                   class="form-control"
+                                                                   placeholder="text"
+                                                                   value="{{ old('law[header][left]', $law->law->header->left ?? '') }}"
+                                                                   autocomplete="off">
+                                                        </div>
                                                         <div class="col-sm-6 col-6 mb-2 col-lg-6">
                                                             <label for="image_text">Header Right</label>
                                                             <input type="text" name="law[header][right]"
                                                                    class="form-control"
                                                                    placeholder="text"
-                                                                   value="{{ old('law[header][right]', $feature->law->header->right?? '') }}"
+                                                                   value="{{ old('law[header][right]', $law->law->header->right?? '') }}"
                                                                    autocomplete="off">
                                                         </div>
                                                     </div>
@@ -313,19 +320,20 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card">
-                                            <form action="{{ route('store.law') }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('store.law') }}" method="POST"
+                                                  enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="card-body">
                                                     <div class="row">
-                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
-                                                                <label for="image_text">Law Name:</label>
-                                                                <input type="text" name="name"
-                                                                       class="form-control"
-                                                                       placeholder="Name"
-                                                                       value="{{ old('name',) }}"
-                                                                       autocomplete="off">
-                                                            </div>
+                                                        <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                            <label for="image_text">Law Name:</label>
+                                                            <input type="text" name="name"
+                                                                   class="form-control"
+                                                                   placeholder="Name"
+                                                                   value="{{ old('name',) }}"
+                                                                   autocomplete="off">
+                                                        </div>
                                                         <div class="col-sm-6 col-6 mb-2 col-lg-6">
                                                             <label for="image_text">Law Image:</label>
                                                             <input type="file" name="image"
@@ -336,7 +344,8 @@
                                                         </div>
                                                         <div class="col-sm-12 col-12 mb-2 col-lg-12">
                                                             <label for="details">Law Content:</label>
-                                                            <textarea name="details" id="details" cols="30" rows="10" class="form-control"></textarea>
+                                                            <textarea name="details" id="details" cols="30" rows="10"
+                                                                      class="form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -350,6 +359,44 @@
                                     </div>
                                 </div>
                             </div>
+                            {{--                            Client Content--}}
+                            <div class="tab-pane" id="client" aria-labelledby="client-tab"
+                                 role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <form action="{{ route('store.client.content') }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                            <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                                <label for="image_text">Client Content Title:</label>
+                                                                <input type="text" name="client[title]"
+                                                                       class="form-control"
+                                                                       placeholder="Client Section Title"
+                                                                       value="{{ old('client[title]',  $client->client->title ?? '') }}"
+                                                                       required=""
+                                                                       autocomplete="off">
+                                                            </div>
+                                                        <div class="col-sm-6 col-6 mb-2 col-lg-6">
+                                                            <label for="image_text">Client Content Text:</label>
+                                                            <input type="text" name="client[text]"
+                                                                   class="form-control"
+                                                                   placeholder="Client Section Text"
+                                                                   value="{{ old('client[text]', $client->client->text ?? '') }}"
+                                                                   required=""
+                                                                   autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -370,10 +417,10 @@
                 processing: true,
                 ajax: '{{ route('law.list') }}',
                 columns: [
-                    {data: "DT_RowIndex",title:"si", name: "DT_RowIndex", searchable: false, orderable: false},
+                    {data: "DT_RowIndex", title: "si", name: "DT_RowIndex", searchable: false, orderable: false},
                     // {data: "feature_image", orderable: false, searchable: false},
-                    {data: "name", title:"title", searchable: true},
-                    {data: "action",title:"action", orderable: false, searchable: false},
+                    {data: "name", title: "title", searchable: true},
+                    {data: "action", title: "action", orderable: false, searchable: false},
                 ],
             });
         })

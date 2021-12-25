@@ -32,7 +32,7 @@ class LogFailedLogin
     {
         if ($event->guard == 'admin'){
             $model = new Admin();
-        }elseif ($event->guard == 'partner'){
+        }elseif ($event->guard == 'member'){
             $model = new BusinessPartner();
         }else{
             $model = new User();

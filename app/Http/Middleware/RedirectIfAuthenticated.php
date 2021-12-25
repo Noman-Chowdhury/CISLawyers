@@ -29,8 +29,8 @@ class RedirectIfAuthenticated
         if ($guard == "admin" && Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::ADMINHOME);
         }
-        if ($guard == "partner" && Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::PARTNERHOME);
+        if ($guard == "member" && Auth::guard($guard)->check()) {
+            return redirect(RouteServiceProvider::MEMBERHOME);
         }
         if ($guard == "user" && Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::USERHOME);

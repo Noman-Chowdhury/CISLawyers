@@ -1,5 +1,5 @@
-@extends('layouts.auth.seller_auth')
-@section('page-title','Seller Register')
+@extends('layouts.auth.member_auth')
+@section('page-title','Member Register')
 @push('styles')
     <style type="text/css">
         #pageloader {
@@ -55,9 +55,9 @@
         </div>
         <br>
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-            <h2 class="card-title font-weight-bold mb-1 login-title"
-                style="text-align: center; text-decoration: underline;" alt="Source Page Registration"><b>Source Page Registration</b></h2>
-            <p class="card-text mb-2">Please Register your account and start the Adventure.</p>
+            <h3 class="card-title font-weight-bold mb-1 login-title"
+                style="text-align: center; text-decoration: underline;" alt="Member Registration"><b>Member Registration</b></h3>
+{{--            <p class="card-text mb-2">Please Register your account and start the Adventure.</p>--}}
             @if ($errors->any())
                 <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-primary">
                     <div class="alert-body font-small-2">
@@ -70,36 +70,20 @@
             <form class="auth-login-form mt-2" action="" method="POST" id="registerSubmit">
                 @csrf
                 <div class="form-group">
-                    <label class="form-label" for="company_name">Company Name<span style="color: red;">*</span></label>
-                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top"
-                       title="" data-original-title="Only accept letters, Write unique company name, Maximum letter: 255"></i>
-                    <div class="input-group input-group-merge">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Company Name"
-                               value="{{ old('name') }}" autocomplete="off" required>
-                        <div class="invalid-feedback" id="companyNameError"></div>
-                    </div>
+                    <label class="form-label" for="user-role" id="member">Member type</label>
+                    <select id="user-role" class="form-control" name="type">
+                        <option value="lawyer">Lawyer</option>
+                        <option value="consultant">Consultant</option>
+                    </select>
+                    <div class="invalid-feedback" id="memberError"></div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="sector">Select Sector<span style="color: red;">*</span></label>
-                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top"
-                       title="" data-original-title="Must be select one (product or service)"></i>
-                    <div class="input-group input-group-merge">
-                        <select class="form-control select2" id="sector" aria-invalid="false" name="sector">
-                            <option selected disabled>Choose Sector</option>
-                            <option value="product">Product</option>
-                            <option value="service">Service</option>
-
-                        </select>
-                        <div class="invalid-feedback" id="sectorError"></div>
-                    </div>
-                </div>
-                <div class="form-group type">
-                    <label for="district">Type</label>
-                    <select class="form-control select2" id="type" aria-invalid="false"
-                            name="type">
-                        <option value=""></option>
-                    </select>
-                    <div class="invalid-feedback" id="typeError"></div>
+                    <label class="form-label" for="basic-icon-default-fullname" id="name">Full Name</label>
+                    <input type="text" class="form-control dt-full-name"
+                           id="name" placeholder="Type valid name"
+                           name="name"
+                    >
+                    <div class="invalid-feedback" id="nameError"></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="email">Email<span style="color: red;">*</span></label>
@@ -119,48 +103,6 @@
                         <input type="text" name="phone_number" id="phone_number" class="form-control"
                                placeholder="Phone Number" value="{{ old('phone_number') }}" autocomplete="off">
                         <div class="invalid-feedback" id="phoneError"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="division">Division<span style="color: red;">*</span></label>
-                    <div class="input-group input-group-merge">
-                        <select class="form-control select2" id="select_division" aria-invalid="false" name="division">
-                            <option selected disabled>Choose Division</option>
-                            @foreach($divisions as $division)
-                                <option value="{{$division->id}}">{{$division->name}}</option>
-                            @endforeach
-                        </select>
-                        <div class="invalid-feedback" id="divisionError"></div>
-                    </div>
-                </div>
-                <div class="form-group district">
-                    <label class="form-label" for="district">District<span style="color: red;">*</span></label>
-                    <div class="input-group input-group-merge">
-                        <select class="form-control select2" id="select_district" aria-invalid="false"
-                                name="district">
-                            <option value=""></option>
-                        </select>
-                        <div class="invalid-feedback" id="districtError"></div>
-                    </div>
-                </div>
-                <div class="form-group upazila">
-                    <label class="form-label" for="upazila">Upazila<span style="color: red;">*</span></label>
-                    <div class="input-group input-group-merge">
-                        <select class="form-control select2" id="select_upazila" aria-invalid="false"
-                                name="upazila">
-                            <option value=""></option>
-                        </select>
-                        <div class="invalid-feedback" id="upazilaError"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="address">Address<span style="color: red;">*</span></label>
-                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top"
-                       title="" data-original-title="Address required"></i>
-                    <div class="input-group input-group-merge">
-                        <input type="text" id="address" name="address" class="form-control"
-                               placeholder="Company Address" value="{{ old('address') }}" autocomplete="off">
-                        <div class="invalid-feedback" id="addressError"></div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -203,7 +145,7 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" name="seller_terms_condition" id="remember-me"
+                        <input class="custom-control-input" name="member_terms_condition" id="remember-me"
                                type="checkbox" tabindex="3" autocomplete="off" required/>
                         <label class="custom-control-label" for="remember-me"> Accept All <a href="">Terms and
                                 Condition</a>
@@ -214,7 +156,7 @@
                 </div>
                 <button class="btn btn-primary btn-block" type="submit" tabindex="4">Register</button>
             </form>
-            <p class="card-text text-center mt-2"><span>Have an Account? </span><a href="{{ route('partner.login') }}"
+            <p class="card-text text-center mt-2"><span>Have an Account? </span><a href="{{ route('member.login') }}"
                                                                                    class="router-link-active"
                                                                                    target="_self"><span> Sign In</span></a>
             </p>
@@ -228,35 +170,17 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $('.district').hide();
-            $('.upazila').hide();
-            $('.type').hide();
             $('#name').focusout(() => {
-                $('#companyNameError').hide()
+                $('#nameError').hide()
             })
             $('#phone_number').focusout(() => {
                 $('#phoneError').hide()
             })
-            $('#sector').focusout(() => {
-                $('#sectorError').hide()
-            })
-            $('#type').focusout(() => {
-                $('#typeError').hide()
+            $('#member').focusout(() => {
+                $('#memberError').hide()
             })
             $('#email-icon').focusout(() => {
                 $('#emailError').hide()
-            })
-            $('#select_division').focusout(() => {
-                $('#divisionError').hide()
-            })
-            $('#select_district').focusout(() => {
-                $('#districtError').hide()
-            })
-            $('#select_upazila').focusout(() => {
-                $('#upazilaError').hide()
-            })
-            $('#address').focusout(() => {
-                $('#addressError').hide()
             })
             $('#login-password').focusout(() => {
                 $('#passwordError').hide()
@@ -295,7 +219,7 @@
 
             // console.log($("#registerSubmit").serialize(),);
             $.ajax({
-                url: '{{ route('partner.register') }}',
+                url: '{{ route('member.register') }}',
                 data: $("#registerSubmit").serialize(),
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -318,31 +242,16 @@
                         toastr.error(obj[key])
                     }
                     if (error.responseJSON.errors.name) {
-                        $('#companyNameError').text(error.responseJSON.errors.name).show();
+                        $('#nameError').text(error.responseJSON.errors.name).show();
                     }
-                    if (error.responseJSON.errors.sector) {
-                        $('#sectorError').text(error.responseJSON.errors.sector).show();
-                    }
-                    if (error.responseJSON.errors.type) {
-                        $('#typeError').text(error.responseJSON.errors.type).show();
+                    if (error.responseJSON.errors.member) {
+                        $('#memberError').text(error.responseJSON.errors.sector).show();
                     }
                     if (error.responseJSON.errors.email) {
                         $('#emailError').text(error.responseJSON.errors.email).show();
                     }
                     if (error.responseJSON.errors.phone_number) {
                         $('#phoneError').text(error.responseJSON.errors.phone_number).show();
-                    }
-                    if (error.responseJSON.errors.division) {
-                        $('#divisionError').text(error.responseJSON.errors.division).show();
-                    }
-                    if (error.responseJSON.errors.district) {
-                        $('#districtError').text(error.responseJSON.errors.district).show();
-                    }
-                    if (error.responseJSON.errors.upazila) {
-                        $('#upazilaError').text(error.responseJSON.errors.upazila).show();
-                    }
-                    if (error.responseJSON.errors.address) {
-                        $('#addressError').text(error.responseJSON.errors.address).show();
                     }
                     if (error.responseJSON.errors.password[0]) {
                         $('#passwordError').text(error.responseJSON.errors.password[0]).show();

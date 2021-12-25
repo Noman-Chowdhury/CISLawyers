@@ -22,8 +22,8 @@ class Authenticate extends Middleware
             return route('admin.login');
         }
 
-        if ($request->is('partner') || $request->is('partner/*')) {
-            return route('partner.login');
+        if ($request->is('member') || $request->is('member/*')) {
+            return route('member.login');
         }
         if ($request->is('agent') || $request->is('agent/*')) {
             return route('agent.login');

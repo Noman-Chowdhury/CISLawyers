@@ -13,14 +13,14 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
+    protected $redirectTo = RouteServiceProvider::MEMBERHOME;
 
     protected $maxAttempts = 3; // Default is 5
     protected $decayMinutes = 2; // Default is 1
 
     public function __construct()
     {
-        $this->middleware('guest:partner')->except('logout');
+        $this->middleware('guest:member')->except('logout');
     }
 
     /**
@@ -28,13 +28,13 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('partner.auth.login');
+        return view('member.auth.login');
     }
 
 
     public function showRegisterForm()
     {
-        return view('partner.auth.registration');
+        return view('member.auth.registration');
     }
 
     /**
@@ -67,7 +67,7 @@ class LoginController extends Controller
             return $response;
         }*/
 
-        return redirect()->route('partner.login');
+        return redirect()->route('member.login');
     }
 
     /**
@@ -75,7 +75,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('partner');
+        return Auth::guard('member');
     }
 
 

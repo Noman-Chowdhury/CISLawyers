@@ -8,7 +8,7 @@ Route::post('/service-request', [\App\Http\Controllers\Frontend\HomeController::
 
 require('frontend.php');
 require('admin.php');
-require('partners.php');
+require('member.php');
 
 //language change (localization)
 Route::get('/lang/{locale}', function ($locale) {

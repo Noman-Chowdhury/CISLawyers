@@ -19,7 +19,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="{{ request()->segment(2)=='home' ? 'active' :'' }} nav-item"><a
-                    class="d-flex align-items-center" href="{{ route('partner.home') }}"
+                    class="d-flex align-items-center" href="{{ route('member.home') }}"
                 ><i data-feather="home"></i><span class="menu-title text-truncate">{{__('Home')}}</span></a>
             </li>
         </ul>

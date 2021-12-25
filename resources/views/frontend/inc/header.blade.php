@@ -21,7 +21,9 @@
     /* ============ desktop view .end// ============ */
 </style>
 @endpush
-
+@php
+$setting = \App\Models\AdminSetting::first();
+@endphp
 <header id="header">
     <div class="topbar">
         <div class="container-fluid">
@@ -39,11 +41,11 @@
                                 <li><a href="{{ route('login') }}">Login</a></li>
                                 <li><a href="{{ route('register') }}">Register</a></li>
                             @endauth
-                            <li><a href="#" target="_blank"><i
+                            <li><a href="{{ $setting->facebook_url ?? '#' }}" target="_blank"><i
                                         class="ti-facebook"></i></a></li>
-                            <li><a href="#" target="_blank"><i
+                            <li><a href="{{ $setting->twitter_url ?? '#'}}" target="_blank"><i
                                         class="ti-twitter-alt"></i></a></li>
-                            <li><a href="#" target="_blank"><i
+                            <li><a href="#" target="{{ $setting->linkedin_url ?? '#' }}"><i
                                         class="ti-linkedin"></i></a></li>
                         </ul>
                     </div>
@@ -51,11 +53,8 @@
                 <div class="col col-md-7 col-sm-12 col-12">
                     <div class="contact-intro">
                         <ul>
-                            {{--              <li><i class="fi ti-mobile"></i> {{ Cache::get('settings')->phone }}</li>--}}
-                            {{--              <li><i class="fi ti-email"></i> {{ Cache::get('settings')->email }}</li>--}}
-                            {{--              <li><i class="fi ti-location-pin"></i> {{ Cache::get('settings')->address }}</li>--}}
-                            <li><i class="fi ti-mobile"></i> +880161059182</li>
-                            <li><i class="fi ti-email"></i> cis@gmail.com</li>
+                            <li><i class="fi ti-mobile"></i> {{ $setting->phone_number ?? 'phone' }}</li>
+                            <li><i class="fi ti-email"></i> {{ $setting->email ?? 'email' }}</li>
                             <li><i class="fi ti-location-pin"></i> Dhaka, Bangladesh</li>
                         </ul>
                     </div>
@@ -80,7 +79,7 @@
                     <div class="col-lg-2 col-md-2 col-2">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{ route('home') }}"><img
-                                    src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"
+                                    src="{{(asset('/images'.$setting->logo ??''))}}"
                                     alt="LOGO"></a>
                         </div>
                     </div>
@@ -114,16 +113,6 @@
                                     </ul>
                                 </div> <!-- navbar-collapse.// -->
 
-                                {{--                @foreach (Cache::get('pages') as $page)--}}
-                                {{--                  <li><a href="{{ url('/' . $page->slug) }}">{{ $page->title }}</a></li>--}}
-                                {{--                @endforeach--}}
-                                {{-- <li><a class="@if (Route::currentRouteName() == 'aboutus') active @endif" href="{{ route('aboutus') }}">About Us</a></li>
-                                <li><a class="@if (Route::currentRouteName() == 'services') active @endif" href="{{ route('services') }}">Services</a></li>
-                                <li><a class="@if (Route::currentRouteName() == 'attorneys') active @endif" href="{{ route('attorneys') }}">Attorneys</a></li>
-                                <li><a class="@if (Route::currentRouteName() == 'practices') active @endif" href="{{ route('practices') }}">Practice Area</a></li>
-                                <li><a class="@if (Route::currentRouteName() == 'cases') active @endif" href="{{ route('cases') }}">Our Cases</a></li>
-                                <li><a class="@if (Route::currentRouteName() == 'faq') active @endif" href="{{ route('faq') }}">FAQ</a></li> --}}
-                                {{--                <li><a class="@if (Route::currentRouteName() == 'contact') active @endif" href="{{ route('contact') }}">Contact Us</a></li>--}}
                             </ul>
                         </div>
                     </div>

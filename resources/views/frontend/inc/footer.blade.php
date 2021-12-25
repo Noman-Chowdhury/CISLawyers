@@ -1,3 +1,6 @@
+@php
+    $setting = \App\Models\AdminSetting::first();
+@endphp
 <footer class="wpo-site-footer">
   <div class="wpo-upper-footer">
     <div class="container">
@@ -5,10 +8,10 @@
         <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
           <div class="widget about-widget">
             <div class="logo widget-title">
-              <img src="{{ asset('images/logo.png') }}"
+              <img src="{{(asset('/images'.$setting->logo ??''))}}"
                 alt="logo">
             </div>
-            <p>details</p>
+            <p>Dhaka, Bangladesh</p>
           </div>
         </div>
         <div class="col col-lg-3 col-md-6 col-sm-12 col-12">

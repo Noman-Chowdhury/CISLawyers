@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Carousel;
 use App\Models\AdminSetting;
 use App\Models\Image;
 use App\Models\Law;
 use App\Uploadable;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 
 class FrontendController extends Controller
@@ -136,6 +138,44 @@ class FrontendController extends Controller
         $setting->rules = json_encode($existing);
         $setting->save();
         Toastr::success('Law Header Updated Successfully', 'Success.');
+        return back();
+    }
+
+    public function basic(){
+        if (AdminSetting::first() == null) {
+            $setting = new AdminSetting();
+            $setting->save();
+        }
+        $data = AdminSetting::first();
+        return view('admin.pages.basic',compact('data'));
+    }
+
+    public function storeBasic(Request $request){
+        $admin_setting = AdminSetting::get()->first();   //get admin_Setting table row
+        //create admin setting id with slogan if null
+
+        $setting = new AdminSetting();
+
+        if ($admin_setting == null) {
+            $setting->slogan = 'NULL';
+            $setting->save();
+        }
+
+        //update logo
+        if ($request->hasFile('logo')) {
+            if ($admin_setting->logo == !null) {
+                File::delete(public_path('/images' . $admin_setting->logo));
+            }
+            $logo = $request->logo;
+            $filename = $this->uploadOne($logo, 312, 64, config('imagepath.default'), true);
+            $admin_setting->update(['logo' => $filename]);
+            Toastr::success("You successfully updated logo");
+        }
+
+        $input = $request->except(['image', 'logo']);
+        $input = array_filter($input, 'strlen');
+        $admin_setting->fill($input)->update();
+//        Toastr::success("You updated only modified input fields.");
         return back();
     }
 }

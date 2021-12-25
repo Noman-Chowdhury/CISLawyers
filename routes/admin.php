@@ -35,6 +35,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('frontend/home/law', [\App\Http\Controllers\FrontendController::class, 'storeLaw'])->name('store.law');
         Route::put('frontend/home/lawHeader', [\App\Http\Controllers\FrontendController::class, 'lawHeader'])->name('store.law.header');
         Route::get('frontend/home/laws', [\App\Http\Controllers\FrontendController::class, 'laws'])->name('law.list');
+        Route::get('frontend/basic', [\App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
+        Route::put('frontend/basic', [\App\Http\Controllers\FrontendController::class, 'storeBasic'])->name('basic.store');
 
         Route::resource('case', \App\Http\Controllers\Admin\CaseController::class);
     });

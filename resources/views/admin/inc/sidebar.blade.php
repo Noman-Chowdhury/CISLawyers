@@ -34,6 +34,11 @@
                     ></i><span class="menu-title text-truncate" data-i18n="User"
                     >{{__('Page Management')}}</span></a>
                 <ul class="menu-content">
+                    <li class=" nav-item"><a
+                            class="d-flex align-items-center" href="{{ route('basic') }}"
+                        ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"
+                                                                  data-i18n="Home"
+                            >{{__('Basic')}}</span></a></li>
                     <li class="{{ request()->segment(2)=='product' ? 'active' :'' }} nav-item"><a
                             class="d-flex align-items-center" href="{{ route('home.setting') }}"
                         ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"

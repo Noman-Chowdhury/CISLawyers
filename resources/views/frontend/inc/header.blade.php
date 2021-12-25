@@ -36,8 +36,8 @@
                                 </li>
                                 <form id="logout-form" action="#" method="POST" style="display: none;">@csrf</form>
                             @else
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
                             @endauth
                             <li><a href="#" target="_blank"><i
                                         class="ti-facebook"></i></a></li>

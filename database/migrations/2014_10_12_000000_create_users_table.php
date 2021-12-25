@@ -16,24 +16,19 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone_number')->nullable()->unique();
-            $table->string('company_name')->nullable();
             $table->string('email')->unique();
+            $table->string('mobile');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('spouse_name')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('passport_no')->nullable();
+            $table->string('nid')->unique();
+            $table->text('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('gender')->nullable();
-            $table->text('profile_picture')->nullable();
-            $table->foreignId('country_id')->nullable()->constrained()->onDelete('set null');
-            $table->foreignId('division_id')->nullable()->constrained()->onDelete('set null');
-            $table->foreignId('district_id')->nullable()->constrained()->onDelete('set null');
-            $table->foreignId('upazila_id')->nullable()->constrained()->onDelete('set null');
-            $table->string('address')->nullable();
-            $table->integer('two_factor_code')->nullable();
-            $table->dateTime('two_factor_created_at')->nullable();
-            $table->dateTime('two_factor_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -7,7 +7,6 @@
 /public/js
 /public/mix-manifest.json
 /storage/*.key
-/storage/framework/sessions
 /vendor
 .env
 .env.backup
@@ -20,7 +19,5 @@ yarn-error.log
 .idea/*
 .vscode/*
 .htaccess
-_ide_helper_models.php
-_ide_helper.php
 *.xlsx
 

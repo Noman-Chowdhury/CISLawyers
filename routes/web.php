@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
+Route::get('/service-request', [\App\Http\Controllers\Frontend\HomeController::class, 'serviceRequest'])->name('service-request');
 
 require('admin.php');
 //require('agent.php');

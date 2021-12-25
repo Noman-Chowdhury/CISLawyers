@@ -90,4 +90,7 @@ class HomeController extends Controller
     {
         //
     }
+    public function serviceRequest(){
+        return view('frontend.service_request');
+    }
 }

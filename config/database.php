@@ -90,14 +90,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-        'affiliate' => [
-            'driver'    => env('DB_CONNECTION_AFFILIATE'),
-            'host'      => env('DB_HOST_AFFILIATE'),
-            'port'      => env('DB_PORT_AFFILIATE'),
-            'database'  => env('DB_DATABASE_AFFILIATE'),
-            'username'  => env('DB_USERNAME_AFFILIATE'),
-            'password'  => env('DB_PASSWORD_AFFILIATE'),
-        ],
+
 
     ],
 

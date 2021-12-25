@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('page-title','Partner List')
 @section('breadcrumb')
-    <h2 class="content-header-title float-left mb-0"> {{__('Partner')}}</h2>
+    <h2 class="content-header-title float-left mb-0"> {{__('Member')}}</h2>
     <div class="breadcrumb-wrapper">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{__('Home')}}</a></li>
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header border-bottom p-1">
                         <div class="head-label">
-                            <h4 class="mb-0 float-left mr-3 "><i class="fa fa-list"></i> {{__('Partner List')}} &nbsp;&nbsp;</h4>
+                            <h4 class="mb-0 float-left mr-3 "><i class="fa fa-list"></i> {{__('Member List')}} &nbsp;&nbsp;</h4>
                         </div>
                         <div class="dt-action-buttons text-right">
                             <div class="dt-buttons d-inline-flex">
@@ -198,7 +198,7 @@
                 serverSide:true,
                 processing:true,
                 responsive: true,
-                ajax: '{{ route('admin.partner.list') }}',
+                ajax: '{{ route('admin.member.list') }}',
                 columns:[
                     {data:"DT_RowIndex", title:"si",name:"DT_RowIndex", searchable:false, orderable:false},
                     {data: "name", title:"Name", orderable:false, defaultContent: 'null'},

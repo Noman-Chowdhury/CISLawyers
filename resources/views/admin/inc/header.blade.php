@@ -82,7 +82,7 @@
                                                            data-toggle="dropdown" aria-haspopup="true"
                                                            aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name font-weight-bolder">Username</span>
+                            class="user-name font-weight-bolder">Admin</span>
 {{--                        @foreach(auth()->user()->getRoleNames() as $name)--}}
 {{--                            <span class="user-status">--}}
 {{--                               Role name--}}

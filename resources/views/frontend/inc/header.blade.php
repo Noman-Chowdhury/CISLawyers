@@ -108,7 +108,7 @@ $setting = \App\Models\AdminSetting::first();
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('financialAssociate-list')}}">Financial Associates </a></li>
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#">Success </a></li>
                                         <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('contact')}}">Contact Us </a></li>
-                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="#" style="background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Join us</a></li>
+                                        <li class="nav-item " style="padding: 15px 0"><a class="nav-link" href="{{route('member.register')}}" style="background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Join us</a></li>
                                         <li class="nav-item  position-right" style="padding: 15px 0"><a class="nav-link" href="{{ route('service-request') }}"  style="margin-left: 10px; background:#e3b576; padding: 10px 15px; color:#000;border-radius: 10px">Get Appointment</a></li>
                                     </ul>
                                 </div> <!-- navbar-collapse.// -->

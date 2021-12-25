@@ -2,10 +2,10 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto">
+            <li class="nav-item mr-auto" style="width: 80%">
                 <a class="" href="{{url('/')}}">
-                    {{--					<img style="height:40px; margin: 20px 20px;" src="{{ asset('images/logo.png') }}"/>--}}
-                    <h3 style="height:40px; margin: 20px 20px;">CIS-LAWYERS</h3>
+                 <img style="height:40px; margin: 20px 20px;"  src="{{ asset('images/'.\App\Models\AdminSetting::first()->logo) }}">
+{{--                    <h3 style="height:40px; margin: 20px 20px;">CIS-LAWYERS</h3>--}}
                 </a>
             </li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
@@ -25,27 +25,27 @@
             </li>
             <li class="{{ Route::CurrentRouteName()=='service.index' ? 'active' :'' }} nav-item">
                 <a class="d-flex align-items-center" href="{{ route('service.index') }}"><i
-                        class="fas fa-tachometer-alt"></i><span class="menu-title text-truncate"
+                        class="fas fa-list"></i><span class="menu-title text-truncate"
                                                                 data-i18n="dashboard">{{__('Services')}}</span></a>
             </li>
             <li class="{{ Route::CurrentRouteName()=='client.index' ? 'active' :'' }} nav-item">
                 <a class="d-flex align-items-center" href="{{ route('client.index') }}"><i
-                        class="fas fa-tachometer-alt"></i><span class="menu-title text-truncate"
+                        class="fas fa-user"></i><span class="menu-title text-truncate"
                                                                 data-i18n="dashboard">{{__('Clients')}}</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"> <i class="fas fa-users"></i>
-                    <span class="menu-title text-truncate" data-i18n="User">{{__('Partners')}}</span></a>
+                    <span class="menu-title text-truncate" data-i18n="User">{{__('Members')}}</span></a>
                 <ul class="menu-content">
-                    <li class="{{ request()->segment(2)=='product'?'active':'' }} nav-item"><a
-                            class="d-flex align-items-center" href="{{ route('admin.partner.list') }}"><i
+                    <li class="{{ Route::CurrentRouteName()=='admin.member.list' ? 'active' :'' }} nav-item"><a
+                            class="d-flex align-items-center" href="{{ route('admin.member.list') }}"><i
                                 class="fas fa-list"></i><span class="menu-title text-truncate"
-                                                              data-i18n="Home">{{__('Partner list')}}</span></a>
+                                                              data-i18n="Home">{{__('Member list')}}</span></a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                        class="fas fa-baby-carriage"
+                        class="fas fa-pager"
                     ></i><span class="menu-title text-truncate" data-i18n="User"
                     >{{__('Page Management')}}</span></a>
                 <ul class="menu-content">
@@ -62,11 +62,11 @@
                 </ul>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                        class="fas fa-baby-carriage"
+                        class="fas fa-file-archive"
                     ></i><span class="menu-title text-truncate" data-i18n="User"
                     >{{__('Case Management')}}</span></a>
                 <ul class="menu-content">
-                    <li class="{{  Route::currentRouteName()=='case.index'?'active':'' }} nav-item"><a
+                    <li class="{{  Route::currentRouteName()=='case.index' && !request()->service ?'active':'' }} nav-item"><a
                             class="d-flex align-items-center" href="{{ route('case.index') }}"
                         ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"
                                                                   data-i18n="Home"
@@ -76,8 +76,8 @@
                         $services = \App\Models\Service::select('name','slug','id')->get();
                     @endphp
                         @foreach($casses as $key=>$case)
-                            <li class="nav-item"><a
-                                    class="d-flex align-items-center" href="#"
+                            <li class="{{  Route::currentRouteName()=='case.index' && request()->service==$key ?'active':'' }} nav-item"><a
+                                    class="d-flex align-items-center" href="{{ route('case.index', ['service'=>$key]) }}"
                                 ><i class="fab fa-product-hunt"></i><span class="menu-title text-truncate"
                                                                           data-i18n="Home"
                                     >{{ \App\Models\Service::findOrFail($key)->name }}</span> &nbsp;<span class="badge badge-danger">{{ \App\Models\ServiceRequest::where('service_id', $key)->get()->count() }}</span></a></li>

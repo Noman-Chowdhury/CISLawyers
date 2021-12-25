@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::PARTNERHOME;
+    protected $redirectTo = RouteServiceProvider::MEMBERHOME;
 
     /**
      * Display the password reset view for the given token.
@@ -72,6 +72,6 @@ class ResetPasswordController extends Controller
      * after password reset.
      */
     public function guard(){
-        return Auth::guard('partner');
+        return Auth::guard('member');
     }
 }

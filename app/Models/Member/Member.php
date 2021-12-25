@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Partner;
+namespace App\Models\Member;
 
 use App\Notifications\Seller\ResetPasswordNotification;
 use App\Notifications\Seller\SellerEmailVerifyNotification;
@@ -9,13 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
-class BusinessPartner extends Authenticatable
+class Member extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
-
-    protected $fillable = ['name', 'image','email', 'phone_number', 'password', 'email_verified_at', 'last_seen_at'];
+    use HasFactory,  Notifiable, SoftDeletes;
+    protected $fillable = ['name', 'profile_image','email', 'phone_number', 'password', 'email_verified_at', 'last_seen_at', 'partner_type','father_name'];
 
     protected $hidden = ['password', 'remember_token',];
 

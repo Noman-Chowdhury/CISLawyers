@@ -79,20 +79,21 @@
                 <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name font-weight-bolder">Partner Name</span>
-{{--                        @foreach(auth('seller')->user()->getRoleNames() as $name)--}}
-                            <span class="user-status">Consultant or Lawyers</span>
+                            class="user-name font-weight-bolder">{{auth('member')->user()->name}}</span>
+                        <span class="user-status">{{ auth('member')->user()->partner_type }}</span>
+{{--                        @foreach(auth('member')->user()->getRoleNames() as $name)--}}
+{{--                            <span class="user-status">Consultant or Lawyers</span>--}}
 {{--                        @endforeach--}}
                     </div>
                     <span class="avatar">
 
-                            <img class="round" src="{{asset('images/default.png')}}"
+                            <img class="round" src="{{asset(config('imagepath.member-profile').auth('member')->user()->profile_image ?? '')}}"
                                  alt="avatar" height="40" width="40">
                             <span class="avatar-status-online"></span>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="#"><i class="mr-50"
+                    <a class="dropdown-item" href="{{route('member.show.profile')}}"><i class="mr-50"
                                                                                         data-feather="user"></i>
                         {{__('Profile')}}</a>
                     {{--					<a class="dropdown-item" href="javascript:void(0);"><i class="mr-50" data-feather="mail"></i> Inbox</a>--}}
@@ -102,7 +103,7 @@
                     <a class="dropdown-item" href="#"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                             class="mr-50" data-feather="power"></i> {{__('Logout')}}</a>
-                    <form id="logout-form" action="{{ route('partner.logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('member.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>
@@ -110,3 +111,4 @@
         </ul>
     </div>
 </nav><!-- END: Header-->
+

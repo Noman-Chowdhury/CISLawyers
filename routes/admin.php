@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
@@ -24,8 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
-        Route::post('add-partner', [AdminHomeController::class, 'add_partner'])->name('admin.partner.add');
-        Route::get('partner-list', [AdminHomeController::class, 'partner_list'])->name('admin.partner.list');
+        Route::post('add-member', [AdminHomeController::class, 'add_partner'])->name('admin.partner.add');
+        Route::get('member-list', [AdminHomeController::class, 'partner_list'])->name('admin.member.list');
 
         Route::get('frontend/home',[\App\Http\Controllers\FrontendController::class, 'getHomeSetting'])->name('home.setting');
         Route::post('frontend/home/carousel',[\App\Http\Controllers\FrontendController::class, 'storeCarousel'])->name('store.carousel');

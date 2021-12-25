@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBusinessPartnersTable extends Migration
+class CreateMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateBusinessPartnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_partners', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('phone_number');
             $table->string('password');
             $table->enum('partner_type', ['lawyer', 'consultant'])->default('lawyer');
-            $table->string('father_name');
-            $table->string('mother_name');
-            $table->timestamp('dob');
-            $table->string('nid_number');
-            $table->string('passport_number');
-            $table->string('bank_name');
-            $table->string('bank_account_number');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->timestamp('dob')->nullable();
+            $table->string('nid_number')->nullable();
+            $table->string('passport_number')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('bank_account_number')->nullable();
             $table->text('profile_image')->nullable();
             $table->text('passport_image')->nullable();
             $table->text('nid')->nullable();
@@ -46,6 +47,6 @@ class CreateBusinessPartnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_partners');
+        Schema::dropIfExists('members');
     }
 }

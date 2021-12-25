@@ -1,10 +1,10 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto">
+            <li class="nav-item mr-auto" style="width: 80%">
                 <a class="" href="{{url('/')}}">
                     <img style="height:40px; margin: 20px 20px;"
-                         src="{{ asset('images/logo.png') }}" alt="cis logo"
+                         src="{{ asset('images/'.\App\Models\AdminSetting::first()->logo) }}" alt="cis logo"
                     />
                 </a>
             </li>
@@ -19,7 +19,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="{{ request()->segment(2)=='home' ? 'active' :'' }} nav-item"><a
-                    class="d-flex align-items-center" href="{{ route('partner.home') }}"
+                    class="d-flex align-items-center" href="{{ route('member.home') }}"
                 ><i data-feather="home"></i><span class="menu-title text-truncate">{{__('Home')}}</span></a>
             </li>
         </ul>

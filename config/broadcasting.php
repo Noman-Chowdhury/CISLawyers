@@ -31,10 +31,10 @@ return [
     'connections' => [
 
         'pusher' => [
-            'driver' => 'pusher',
-            'key' => 'daa59507e1b2b4af833d',
-            'secret' => '25dcbba85ef83bb5297e',
-            'app_id' => '1270734',
+            'driver' => '',
+            'key' => '',
+            'secret' => '',
+            'app_id' => '',
             'options' => [
                 'cluster' => 'ap2',
                 'useTLS' => true

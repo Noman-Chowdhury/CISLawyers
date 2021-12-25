@@ -23,7 +23,7 @@
                 responsive: true,
                 serverSide: true,
                 processing: true,
-                ajax: '{{ route('case.index') }}',
+                ajax: '{{ route('case.index', ['service'=>request()->service]) }}',
                 columns: [
                     {data: "DT_RowIndex",title:"si", name: "DT_RowIndex", searchable: false, orderable: false},
                     {data: "case_id", title:"case id", searchable: true},

@@ -19,15 +19,13 @@
                             @csrf
                             @method('PUT')
                             <div class="row">
-                                <div class="col-12 mb-2 mx-auto">
+                                <div class="col-8 mb-2 mx-auto">
                                     <div class="border rounded p-2">
                                         <h4 class="mb-1">{{__('Header Logo')}}</h4>
                                         <div class="media flex-column flex-md-row">
                                             <img src="{{(asset('/images'.$data->logo))}}" id="header_logo_view" class="rounded mr-2 mb-1 mb-md-0"
                                                  width="170" height="110" alt="logo"/>
                                             <div class="media-body">
-                                                <small class="text-muted">Required image resolution 312x64, image size
-                                                    10KB.</small>
                                                 <div class="d-inline-block">
                                                     <div class="form-group mb-0">
                                                         <div class="custom-file">
@@ -36,6 +34,8 @@
                                                             <label class="custom-file-label" for="blogCustomFile">Choose
                                                                 file</label>
                                                         </div>
+                                                        <small class="text-muted">Required image resolution 312x64, image size
+                                                            10KB.</small>
                                                     </div>
                                                 </div>
                                             </div>

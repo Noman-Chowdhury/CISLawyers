@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
     public function __construct()
     {
-        $this->middleware('guest:partner');
+        $this->middleware('guest:member');
     }
 
     /**
@@ -21,7 +21,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('partner.auth.passwords.email');
+        return view('member.auth.passwords.email');
     }
 
     /**
@@ -59,6 +59,6 @@ class ForgotPasswordController extends Controller
      * after password reset.
      */
     public function guard(){
-        return Auth::guard('seller');
+        return Auth::guard('member');
     }
 }

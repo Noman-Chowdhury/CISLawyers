@@ -1,13 +1,6 @@
 <?php
 
-use App\Models\Search;
-use App\Models\Seller\Feature;
-use App\Models\Seller\Product;
-use App\Models\Seller\Seller;
-use App\Models\Statistic;
-use App\Models\Stock;
-use App\Models\Wallet;
-use App\Models\WalletHistory;
+
 use Brian2694\Toastr\Facades\Toastr;
 
 function datatableStatus($element)

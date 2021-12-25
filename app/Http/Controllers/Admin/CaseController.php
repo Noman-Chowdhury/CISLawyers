@@ -14,7 +14,11 @@ class CaseController extends Controller
     public function index()
     {
         if (\request()->ajax()) {
-            $cases = ServiceRequest::latest()->with('user','service');
+            if (\request()->service){
+                $cases = ServiceRequest::where('service_id', \request()->service)->with('user','service')->latest();
+            }else{
+                $cases = ServiceRequest::latest()->with('user','service');
+            }
             return DataTables::of($cases)
                 ->addIndexColumn()
                 ->addColumn('action', function ($case) {

@@ -4,7 +4,13 @@
 
     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+            <div class="d-flex justify-content-center">
+                <a class="" href="{{url('/')}}">
+                    <img style="height:40px; margin: 20px 20px;"  src="{{ asset('images/'.\App\Models\AdminSetting::first()->logo) }}">
+                </a>
+            </div>
             <h2 class="card-title font-weight-bold mb-1">Forgot Password? 🔒</h2>
+            <br>
             <p class="card-text mb-2">Enter your email and we'll send you instructions to reset your password</p>
             @if ($errors->any())
                 <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-primary">

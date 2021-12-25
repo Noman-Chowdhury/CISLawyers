@@ -1,5 +1,5 @@
-@extends('layouts.auth.partner_auth')
-@section('page-title','Partner Login')
+@extends('layouts.auth.member_auth')
+@section('page-title','Member Login')
 @push('styles')
 <style type="text/css">
     .input-group-append:not(:last-child) .input-group-text {
@@ -29,12 +29,12 @@
     <div class="px-xl-2 mx-auto col-sm-8 col-md-10 col-lg-12">
         <div class="d-flex justify-content-center">
             <a class="" href="{{url('/')}}">
-	            <img style="height:50px;" src="{{ asset('admin/app-assets/images/ico/cislawyers_logo.png') }}"/>
+                <img style="height:40px; margin: 20px 20px;"  src="{{ asset('images/'.\App\Models\AdminSetting::first()->logo) }}" }}"/>
             </a>
         </div>
 
         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-            <h2 class="card-title font-weight-bold mb-1 underline text-center login-title" style="text-decoration: underline"><b>Partner Login</b></h2>
+            <h2 class="card-title font-weight-bold mb-1 underline text-center login-title" style="text-decoration: underline"><b>Member Login</b></h2>
             <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
             <div role="alert" aria-live="polite" aria-atomic="true" id="hide" class="alert alert-primary" style="display:none !important;">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             @endif
-            <form class="auth-login-form mt-2" action="{{ route('partner.login') }}" method="POST">
+            <form class="auth-login-form mt-2" action="{{ route('member.login') }}" method="POST">
                 @csrf
                  <div class="form-group">
                     <label class="form-label" for="login-email">Email<span style="color: red;">*</span></label>
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <div class="d-flex justify-content-between">
-                        <label for="login-password">Password<span style="color: red;">*</span></label><a href="{{route('partner.password.request')}}"><small>Forgot Password?</small></a>
+                        <label for="login-password">Password<span style="color: red;">*</span></label><a href="{{route('member.password.request')}}"><small>Forgot Password?</small></a>
                     </div>
                     <div class="input-group input-group-merge form-password-toggle">
                         <div class="input-group-prepend">
@@ -85,7 +85,7 @@
                 </div>
                 <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
             </form>
-{{--            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('partner.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>--}}
+            <p class="card-text text-center mt-2"><span>New on our platform? </span><a href="{{ route('member.register') }}" class="router-link-active" target="_self"><span> Create an account</span></a></p>
         </div>
     </div>
     </div>

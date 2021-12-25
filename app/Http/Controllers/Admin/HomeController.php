@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
 use App\Models\Admin\Organizations;
 use App\Models\Invoice;
+use App\Models\Member\Member;
 use App\Models\Partner\BusinessPartner;
 use App\Models\Seller\Seller;
 use App\Models\Seller\Service;
@@ -31,11 +32,11 @@ class HomeController extends Controller
     }
     public function add_partner(Request $request)
     {
-        $partner = new BusinessPartner();
+        $partner = new Member();
         $partner->name = $request->full_name;
         $partner->email = $request->user_email;
         $partner->password = bcrypt(12345678);
-        $partner->partner_type = $request->type;
+        $partner->member_type = $request->type;
         $partner->father_name = $request->father_name;
         $partner->mother_name = $request->mother_name;
 //        $partner->dob = $request->date_of_birth;
@@ -52,7 +53,7 @@ class HomeController extends Controller
     public function partner_list(Request $request)
     {
         if (\request()->ajax()) {
-            $partners = BusinessPartner::all();
+            $partners = Member::all();
             return DataTables::of($partners)->addIndexColumn()
                 ->addIndexColumn()
                 ->addColumn('name', function ($partner) {

@@ -28,7 +28,7 @@ $setting = \App\Models\AdminSetting::first();
     <div class="topbar">
         <div class="container-fluid">
             <div class="row">
-                <div class="col col-md-5 col-sm-12 col-12">
+                <div class="col col-md-4 col-sm-12 col-12">
                     <div class="contact-info">
                         <ul>
                             @auth
@@ -50,7 +50,7 @@ $setting = \App\Models\AdminSetting::first();
                         </ul>
                     </div>
                 </div>
-                <div class="col col-md-7 col-sm-12 col-12">
+                <div class="col col-md-8 col-sm-12 col-12">
                     <div class="contact-intro">
                         <ul>
                             <li><i class="fi ti-mobile"></i> {{ $setting->phone_number ?? 'phone' }}</li>

@@ -26,7 +26,9 @@ class User extends Authenticatable
         'passport_no',
         'nid',
         'address',
-        'password'
+        'password',
+        'provider',
+        'provider_id'
     ];
 
     /**

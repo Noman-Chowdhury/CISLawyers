@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+Route::get('social-login/{provider}', [LoginController::class,'redirectToProvider'])->name('social-login');
+Route::get('social-login/{provider}/callback', [LoginController::class,'handleProviderCallback']);
 Route::get('/abouts', [\App\Http\Controllers\Frontend\HomeController::class, 'abouts'])->name('abouts');
 Route::get('/contact', [\App\Http\Controllers\Frontend\HomeController::class, 'contact'])->name('contact');
 Route::get('/lawyers', [\App\Http\Controllers\Frontend\HomeController::class, 'lawyersList'])->name('lawyers-list');

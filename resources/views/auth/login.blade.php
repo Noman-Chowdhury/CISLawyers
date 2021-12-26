@@ -34,6 +34,9 @@
                                 <div class="submit-area">
                                     <button type="submit" class="theme-btn">Login</button>
                                 </div>
+                                <div class="submit-area">
+                                    <a type="button" href="{{ route('social-login','GOOGLE') }}" class="theme-btn">Login with Gmail</a>
+                                </div>
                             </form>
                         </div>
                     </div>
